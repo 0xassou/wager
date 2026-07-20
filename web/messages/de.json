@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "Wager — Prognosemarkt auf dem Arc Testnet",
+    "description": "Erstelle einen Markt, beziehe Position, streiche deine Gewinne ein — alles on-chain, abgerechnet in USDC auf dem Arc Testnet."
+  },
+  "nav": {
+    "markets": "Märkte",
+    "myMarkets": "Meine Märkte"
+  },
+  "theme": {
+    "toLight": "Zum hellen Modus wechseln",
+    "toDark": "Zum dunklen Modus wechseln"
+  },
+  "language": {
+    "label": "Sprache"
+  },
+  "footer": {
+    "disclaimer": "Wager — MVP auf dem Arc Testnet · Nur Test-USDC, kein echter Wert"
+  },
+  "home": {
+    "eyebrow": "Prognosemarkt · Arc Testnet",
+    "title1": "Deine Meinung zählt.",
+    "title2": "In USDC, sofort.",
+    "subtitle": "Erstelle einen Markt, beziehe Position, streiche deine Gewinne ein — alles on-chain, abgerechnet in USDC.",
+    "cta": "Position eröffnen",
+    "statMarkets": "Märkte",
+    "statVolume": "Gesamtvolumen",
+    "emptyTitle": "Noch keine Märkte",
+    "emptySubtitle": "Sei der Erste, der einen erstellt!"
+  },
+  "dataError": {
+    "title": "Märkte konnten nicht geladen werden",
+    "body": "Der Arc-Testnet-RPC hat nicht rechtzeitig geantwortet. Das kann durch Rate-Limiting passieren — versuche es erneut.",
+    "retry": "Erneut versuchen"
+  },
+  "status": {
+    "open": "Offen",
+    "pending": "Auflösung ausstehend",
+    "resolvedYes": "Aufgelöst · Ja",
+    "resolvedNo": "Aufgelöst · Nein"
+  },
+  "common": {
+    "yes": "Ja",
+    "no": "Nein"
+  },
+  "card": {
+    "bets": "{count, plural, one {# Wette} other {# Wetten}}"
+  },
+  "time": {
+    "ended": "Beendet",
+    "d": "T",
+    "h": "Std",
+    "m": "Min",
+    "s": "Sek"
+  },
+  "detail": {
+    "back": "Alle Märkte",
+    "createdBy": "Erstellt von",
+    "you": "dir",
+    "endsIn": "Wettschluss in",
+    "endedOn": "Wetten endeten am {date}",
+    "poolYes": "Ja-Pool",
+    "poolNo": "Nein-Pool",
+    "volume": "Volumen",
+    "actionRequired": "Aktion erforderlich:",
+    "actionBody": "dieser Markt ist beendet. Als Ersteller musst du das Ergebnis festlegen.",
+    "resolveCta": "Markt auflösen",
+    "waiting": "Warten auf die Ergebnisfeststellung durch den Markterstelle.",
+    "myPosition": "Meine Position",
+    "onYes": "Auf Ja",
+    "onNo": "Auf Nein"
+  },
+  "bet": {
+    "title": "Wette platzieren",
+    "amount": "Betrag (USDC)",
+    "balanceMax": "Guthaben: {balance} — Max",
+    "potential": "Möglicher Gewinn",
+    "connect": "Wallet verbinden",
+    "approve": "1/2 · {amount} USDC genehmigen",
+    "betOn": "{amount} USDC auf {side} setzen",
+    "steps": "Schritt 1: USDC genehmigen · Schritt 2: Wette bestätigen"
+  },
+  "claim": {
+    "winnings": "Deine Gewinne",
+    "cta": "Gewinne einfordern",
+    "claimed": "✓ Gewinne eingefordert",
+    "nothing": "In diesem Markt gibt es nichts einzufordern. Nächstes Mal mehr Glück!"
+  },
+  "resolve": {
+    "title": "Markt auflösen",
+    "warning": "⚠️ Diese Aktion ist endgültig. Gewinner können ihre Auszahlung danach sofort einfordern.",
+    "choose": "Ergebnis wählen",
+    "confirm": "Bestätigen: {side}",
+    "confirming": "Wird bestätigt..."
+  },
+  "create": {
+    "title": "Markt erstellen",
+    "question": "Frage",
+    "placeholder": "Z. B. \"Wird BTC bis zum 31. Dezember 150.000 $ überschreiten?\"",
+    "endLabel": "Wettschluss",
+    "endHelp": "Nach diesem Datum kann niemand mehr wetten und du kannst den Markt auflösen.",
+    "cta": "Markt erstellen",
+    "confirming": "Wird bestätigt...",
+    "connect": "Wallet verbinden"
+  },
+  "activity": {
+    "title": "Wettverlauf",
+    "empty": "Noch keine Wetten.",
+    "loading": "Wird geladen..."
+  },
+  "config": {
+    "title": "Vertrag nicht konfiguriert",
+    "body": "Vertrag bereitstellen (siehe README), dann NEXT_PUBLIC_MARKET_ADDRESS und NEXT_PUBLIC_USDC_ADDRESS in web/.env.local setzen und den Server neu starten."
+  },
+  "myMarkets": {
+    "title": "Meine Märkte",
+    "tabCreated": "Erstellt ({count})",
+    "tabBets": "Meine Wetten ({count})",
+    "pendingAlert": "{count, plural, one {# Markt wartet auf Auflösung} other {# Märkte warten auf Auflösung}}",
+    "pendingHint": "— klicke auf einen beendeten Markt, um das Ergebnis festzulegen.",
+    "connectTitle": "Wallet verbinden",
+    "connectBody": "Um deine erstellten Märkte und Wetten zu sehen, verbinde zuerst deine Wallet.",
+    "emptyCreated": "Du hast noch keinen Markt erstellt",
+    "emptyBets": "Du hast noch nicht gewettet",
+    "emptyHint": "Gehe zur Startseite, um loszulegen."
+  }
+}

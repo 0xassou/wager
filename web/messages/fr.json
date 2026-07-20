@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "Wager — Prediction Market sur Arc Testnet",
+    "description": "Crée un marché, prends position, empoche tes gains — le tout on-chain, réglé en USDC sur Arc Testnet."
+  },
+  "nav": {
+    "markets": "Marchés",
+    "myMarkets": "Mes marchés"
+  },
+  "theme": {
+    "toLight": "Passer en mode clair",
+    "toDark": "Passer en mode sombre"
+  },
+  "language": {
+    "label": "Langue"
+  },
+  "footer": {
+    "disclaimer": "Wager — MVP sur Arc Testnet · USDC de test uniquement, aucune valeur réelle"
+  },
+  "home": {
+    "eyebrow": "Prediction Market · Arc Testnet",
+    "title1": "Ton avis compte.",
+    "title2": "En USDC, sur-le-champ.",
+    "subtitle": "Crée un marché, prends position, empoche tes gains — le tout on-chain, réglé en USDC.",
+    "cta": "Ouvrir une position",
+    "statMarkets": "Marchés",
+    "statVolume": "Volume total",
+    "emptyTitle": "Aucun marché pour le moment",
+    "emptySubtitle": "Sois le premier à en créer un !"
+  },
+  "dataError": {
+    "title": "Impossible de charger les marchés",
+    "body": "Le RPC Arc Testnet n'a pas répondu à temps. Cela peut arriver en cas de limitation de débit — réessaie.",
+    "retry": "Réessayer"
+  },
+  "status": {
+    "open": "Ouvert",
+    "pending": "En attente de résolution",
+    "resolvedYes": "Résolu · Oui",
+    "resolvedNo": "Résolu · Non"
+  },
+  "common": {
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "card": {
+    "bets": "{count, plural, one {# pari} other {# paris}}"
+  },
+  "time": {
+    "ended": "Terminé",
+    "d": "j",
+    "h": "h",
+    "m": "m",
+    "s": "s"
+  },
+  "detail": {
+    "back": "Tous les marchés",
+    "createdBy": "Créé par",
+    "you": "toi",
+    "endsIn": "Fin des paris dans",
+    "endedOn": "Paris terminés le {date}",
+    "poolYes": "Pool Oui",
+    "poolNo": "Pool Non",
+    "volume": "Volume",
+    "actionRequired": "Action requise :",
+    "actionBody": "ce marché est terminé. En tant que créateur, tu dois déclarer le résultat.",
+    "resolveCta": "Résoudre le marché",
+    "waiting": "En attente de la résolution par le créateur du marché.",
+    "myPosition": "Ma position",
+    "onYes": "Sur Oui",
+    "onNo": "Sur Non"
+  },
+  "bet": {
+    "title": "Placer un pari",
+    "amount": "Montant (USDC)",
+    "balanceMax": "Solde : {balance} — Max",
+    "potential": "Gain potentiel",
+    "connect": "Connecte ton wallet",
+    "approve": "1/2 · Approuver {amount} USDC",
+    "betOn": "Parier {amount} USDC sur {side}",
+    "steps": "Étape 1 : approuver le USDC · Étape 2 : confirmer le pari"
+  },
+  "claim": {
+    "winnings": "Tes gains",
+    "cta": "Réclamer mes gains",
+    "claimed": "✓ Gains réclamés",
+    "nothing": "Pas de gains à réclamer sur ce marché. Plus de chance la prochaine fois !"
+  },
+  "resolve": {
+    "title": "Résoudre le marché",
+    "warning": "⚠️ Cette action est définitive. Les gagnants pourront réclamer leurs gains immédiatement après.",
+    "choose": "Choisis un résultat",
+    "confirm": "Confirmer : {side}",
+    "confirming": "Confirmation..."
+  },
+  "create": {
+    "title": "Créer un marché",
+    "question": "Question",
+    "placeholder": "Ex : \"Le BTC dépassera-t-il 150k$ au 31 décembre ?\"",
+    "endLabel": "Fin des paris",
+    "endHelp": "Après cette date, plus personne ne peut parier et tu pourras résoudre le marché.",
+    "cta": "Créer le marché",
+    "confirming": "Confirmation...",
+    "connect": "Connecte ton wallet"
+  },
+  "activity": {
+    "title": "Historique des paris",
+    "empty": "Aucun pari pour le moment.",
+    "loading": "Chargement..."
+  },
+  "config": {
+    "title": "Contrat non configuré",
+    "body": "Déploie le contrat (voir README), puis renseigne NEXT_PUBLIC_MARKET_ADDRESS et NEXT_PUBLIC_USDC_ADDRESS dans web/.env.local, et redémarre le serveur."
+  },
+  "myMarkets": {
+    "title": "Mes marchés",
+    "tabCreated": "Créés ({count})",
+    "tabBets": "Mes paris ({count})",
+    "pendingAlert": "{count, plural, one {# marché en attente de résolution} other {# marchés en attente de résolution}}",
+    "pendingHint": "— clique sur un marché terminé pour déclarer son résultat.",
+    "connectTitle": "Connecte ton wallet",
+    "connectBody": "Pour voir tes marchés créés et tes paris, connecte d'abord ton wallet.",
+    "emptyCreated": "Tu n'as pas encore créé de marché",
+    "emptyBets": "Tu n'as pas encore parié",
+    "emptyHint": "Rends-toi sur la page d'accueil pour commencer."
+  }
+}

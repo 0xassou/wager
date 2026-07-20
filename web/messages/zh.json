@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "Wager — Arc 测试网预测市场",
+    "description": "创建市场，建立仓位，赚取收益——全部链上完成，以 USDC 在 Arc 测试网结算。"
+  },
+  "nav": {
+    "markets": "市场",
+    "myMarkets": "我的市场"
+  },
+  "theme": {
+    "toLight": "切换到浅色模式",
+    "toDark": "切换到深色模式"
+  },
+  "language": {
+    "label": "语言"
+  },
+  "footer": {
+    "disclaimer": "Wager — Arc 测试网 MVP · 仅限测试用 USDC，无实际价值"
+  },
+  "home": {
+    "eyebrow": "预测市场 · Arc 测试网",
+    "title1": "你的判断很重要。",
+    "title2": "用 USDC，立即变现。",
+    "subtitle": "创建市场，建立仓位，赚取收益——全部链上完成，以 USDC 结算。",
+    "cta": "建立仓位",
+    "statMarkets": "市场数",
+    "statVolume": "总交易量",
+    "emptyTitle": "暂无市场",
+    "emptySubtitle": "成为第一个创建市场的人！"
+  },
+  "dataError": {
+    "title": "无法加载市场",
+    "body": "Arc 测试网的 RPC 未能及时响应,这可能是由于请求频率限制导致的——请重试。",
+    "retry": "重试"
+  },
+  "status": {
+    "open": "进行中",
+    "pending": "待结算",
+    "resolvedYes": "已结算 · 是",
+    "resolvedNo": "已结算 · 否"
+  },
+  "common": {
+    "yes": "是",
+    "no": "否"
+  },
+  "card": {
+    "bets": "{count} 笔投注"
+  },
+  "time": {
+    "ended": "已结束",
+    "d": "天",
+    "h": "时",
+    "m": "分",
+    "s": "秒"
+  },
+  "detail": {
+    "back": "所有市场",
+    "createdBy": "创建者",
+    "you": "你",
+    "endsIn": "投注截止还剩",
+    "endedOn": "投注已于 {date} 截止",
+    "poolYes": "「是」资金池",
+    "poolNo": "「否」资金池",
+    "volume": "交易量",
+    "actionRequired": "需要操作：",
+    "actionBody": "该市场已结束。作为创建者，你需要公布结果。",
+    "resolveCta": "结算市场",
+    "waiting": "等待市场创建者公布结果。",
+    "myPosition": "我的仓位",
+    "onYes": "押注「是」",
+    "onNo": "押注「否」"
+  },
+  "bet": {
+    "title": "进行投注",
+    "amount": "金额（USDC）",
+    "balanceMax": "余额：{balance} — 最大",
+    "potential": "潜在收益",
+    "connect": "连接钱包",
+    "approve": "1/2 · 授权 {amount} USDC",
+    "betOn": "投注 {amount} USDC 于「{side}」",
+    "steps": "步骤 1：授权 USDC · 步骤 2：确认投注"
+  },
+  "claim": {
+    "winnings": "你的收益",
+    "cta": "领取收益",
+    "claimed": "✓ 收益已领取",
+    "nothing": "该市场没有可领取的收益。祝下次好运！"
+  },
+  "resolve": {
+    "title": "结算市场",
+    "warning": "⚠️ 此操作不可撤销。结算后获胜者可立即领取奖励。",
+    "choose": "选择结果",
+    "confirm": "确认：{side}",
+    "confirming": "确认中..."
+  },
+  "create": {
+    "title": "创建市场",
+    "question": "问题",
+    "placeholder": "例如：\"BTC 会在 12 月 31 日前突破 15 万美元吗？\"",
+    "endLabel": "投注截止时间",
+    "endHelp": "此日期之后将无法再投注，你可以结算该市场。",
+    "cta": "创建市场",
+    "confirming": "确认中...",
+    "connect": "连接钱包"
+  },
+  "activity": {
+    "title": "投注记录",
+    "empty": "暂无投注。",
+    "loading": "加载中..."
+  },
+  "config": {
+    "title": "合约未配置",
+    "body": "部署合约（参见 README），然后在 web/.env.local 中设置 NEXT_PUBLIC_MARKET_ADDRESS 和 NEXT_PUBLIC_USDC_ADDRESS，并重启服务器。"
+  },
+  "myMarkets": {
+    "title": "我的市场",
+    "tabCreated": "已创建（{count}）",
+    "tabBets": "我的投注（{count}）",
+    "pendingAlert": "{count} 个市场待结算",
+    "pendingHint": "— 点击已结束的市场以公布结果。",
+    "connectTitle": "连接钱包",
+    "connectBody": "要查看你创建的市场和投注记录，请先连接钱包。",
+    "emptyCreated": "你还没有创建任何市场",
+    "emptyBets": "你还没有进行任何投注",
+    "emptyHint": "前往首页开始使用。"
+  }
+}

@@ -1,0 +1,21 @@
+# Dépendances
+node_modules/
+
+# Secrets — ne jamais commiter
+.env
+.env.local
+.env*.local
+
+# Build Hardhat
+contracts/artifacts/
+contracts/cache/
+contracts/typechain-types/
+
+# Build Next.js
+web/.next/
+web/out/
+web/tsconfig.tsbuildinfo
+
+# Divers
+.DS_Store
+*.log

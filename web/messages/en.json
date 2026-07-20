@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "Wager — Prediction Market on Arc Testnet",
+    "description": "Create a market, take a position, pocket your winnings — all on-chain, settled in USDC on Arc Testnet."
+  },
+  "nav": {
+    "markets": "Markets",
+    "myMarkets": "My Markets"
+  },
+  "theme": {
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "footer": {
+    "disclaimer": "Wager — MVP on Arc Testnet · Test USDC only, no real value"
+  },
+  "home": {
+    "eyebrow": "Prediction Market · Arc Testnet",
+    "title1": "Your take counts.",
+    "title2": "In USDC, on the spot.",
+    "subtitle": "Create a market, take a position, pocket your winnings — all on-chain, settled in USDC.",
+    "cta": "Open a position",
+    "statMarkets": "Markets",
+    "statVolume": "Total volume",
+    "emptyTitle": "No markets yet",
+    "emptySubtitle": "Be the first to create one!"
+  },
+  "dataError": {
+    "title": "Couldn't load markets",
+    "body": "The Arc Testnet RPC didn't respond in time. This can happen under rate limiting — try again.",
+    "retry": "Retry"
+  },
+  "status": {
+    "open": "Open",
+    "pending": "Awaiting resolution",
+    "resolvedYes": "Resolved · Yes",
+    "resolvedNo": "Resolved · No"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "card": {
+    "bets": "{count, plural, one {# bet} other {# bets}}"
+  },
+  "time": {
+    "ended": "Ended",
+    "d": "d",
+    "h": "h",
+    "m": "m",
+    "s": "s"
+  },
+  "detail": {
+    "back": "All markets",
+    "createdBy": "Created by",
+    "you": "you",
+    "endsIn": "Betting ends in",
+    "endedOn": "Betting ended on {date}",
+    "poolYes": "Yes pool",
+    "poolNo": "No pool",
+    "volume": "Volume",
+    "actionRequired": "Action required:",
+    "actionBody": "this market has ended. As its creator, you must declare the outcome.",
+    "resolveCta": "Resolve market",
+    "waiting": "Waiting for the market creator to declare the outcome.",
+    "myPosition": "My position",
+    "onYes": "On Yes",
+    "onNo": "On No"
+  },
+  "bet": {
+    "title": "Place a bet",
+    "amount": "Amount (USDC)",
+    "balanceMax": "Balance: {balance} — Max",
+    "potential": "Potential payout",
+    "connect": "Connect your wallet",
+    "approve": "1/2 · Approve {amount} USDC",
+    "betOn": "Bet {amount} USDC on {side}",
+    "steps": "Step 1: approve USDC · Step 2: confirm the bet"
+  },
+  "claim": {
+    "winnings": "Your winnings",
+    "cta": "Claim winnings",
+    "claimed": "✓ Winnings claimed",
+    "nothing": "Nothing to claim on this market. Better luck next time!"
+  },
+  "resolve": {
+    "title": "Resolve market",
+    "warning": "⚠️ This action is final. Winners will be able to claim their rewards immediately afterwards.",
+    "choose": "Pick an outcome",
+    "confirm": "Confirm: {side}",
+    "confirming": "Confirming..."
+  },
+  "create": {
+    "title": "Create a market",
+    "question": "Question",
+    "placeholder": "E.g. \"Will BTC top $150k by December 31?\"",
+    "endLabel": "Betting deadline",
+    "endHelp": "After this date, no one can bet anymore and you will be able to resolve the market.",
+    "cta": "Create market",
+    "confirming": "Confirming...",
+    "connect": "Connect your wallet"
+  },
+  "activity": {
+    "title": "Bet history",
+    "empty": "No bets yet.",
+    "loading": "Loading..."
+  },
+  "config": {
+    "title": "Contract not configured",
+    "body": "Deploy the contract (see the README), then set NEXT_PUBLIC_MARKET_ADDRESS and NEXT_PUBLIC_USDC_ADDRESS in web/.env.local and restart the server."
+  },
+  "myMarkets": {
+    "title": "My markets",
+    "tabCreated": "Created ({count})",
+    "tabBets": "My bets ({count})",
+    "pendingAlert": "{count, plural, one {# market awaiting resolution} other {# markets awaiting resolution}}",
+    "pendingHint": "— click an ended market to declare its outcome.",
+    "connectTitle": "Connect your wallet",
+    "connectBody": "To see the markets you created and your bets, connect your wallet first.",
+    "emptyCreated": "You haven't created any markets yet",
+    "emptyBets": "You haven't placed any bets yet",
+    "emptyHint": "Head to the homepage to get started."
+  }
+}

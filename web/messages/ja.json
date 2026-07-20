@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "Wager — Arc テストネットの予測市場",
+    "description": "マーケットを作成し、ポジションを取り、利益を手に入れよう——すべてオンチェーンで、Arc テストネット上の USDC で決済。"
+  },
+  "nav": {
+    "markets": "マーケット",
+    "myMarkets": "マイマーケット"
+  },
+  "theme": {
+    "toLight": "ライトモードに切り替え",
+    "toDark": "ダークモードに切り替え"
+  },
+  "language": {
+    "label": "言語"
+  },
+  "footer": {
+    "disclaimer": "Wager — Arc テストネット上の MVP · テスト用 USDC のみ、実際の価値はありません"
+  },
+  "home": {
+    "eyebrow": "予測市場 · Arc テストネット",
+    "title1": "あなたの見立てがすべて。",
+    "title2": "USDC で、その場で。",
+    "subtitle": "マーケットを作成し、ポジションを取り、利益を手に入れよう——すべてオンチェーンで、USDC で決済。",
+    "cta": "ポジションを取る",
+    "statMarkets": "マーケット数",
+    "statVolume": "総取引量",
+    "emptyTitle": "まだマーケットがありません",
+    "emptySubtitle": "最初のマーケットを作成しましょう！"
+  },
+  "dataError": {
+    "title": "マーケットを読み込めませんでした",
+    "body": "Arc テストネットの RPC が時間内に応答しませんでした。レート制限が原因の場合があります — もう一度お試しください。",
+    "retry": "再試行"
+  },
+  "status": {
+    "open": "受付中",
+    "pending": "解決待ち",
+    "resolvedYes": "解決済み · Yes",
+    "resolvedNo": "解決済み · No"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "card": {
+    "bets": "{count} 件のベット"
+  },
+  "time": {
+    "ended": "終了",
+    "d": "日",
+    "h": "時間",
+    "m": "分",
+    "s": "秒"
+  },
+  "detail": {
+    "back": "すべてのマーケット",
+    "createdBy": "作成者",
+    "you": "あなた",
+    "endsIn": "ベット締切まで",
+    "endedOn": "ベットは {date} に終了しました",
+    "poolYes": "Yes プール",
+    "poolNo": "No プール",
+    "volume": "取引量",
+    "actionRequired": "対応が必要です：",
+    "actionBody": "このマーケットは終了しました。作成者として、結果を確定してください。",
+    "resolveCta": "マーケットを解決",
+    "waiting": "マーケット作成者による結果確定を待っています。",
+    "myPosition": "自分のポジション",
+    "onYes": "Yes に",
+    "onNo": "No に"
+  },
+  "bet": {
+    "title": "ベットする",
+    "amount": "金額（USDC）",
+    "balanceMax": "残高：{balance} — 最大",
+    "potential": "予想利益",
+    "connect": "ウォレットを接続",
+    "approve": "1/2 · {amount} USDC を承認",
+    "betOn": "{amount} USDC を {side} にベット",
+    "steps": "手順1：USDC を承認 · 手順2：ベットを確定"
+  },
+  "claim": {
+    "winnings": "獲得利益",
+    "cta": "利益を受け取る",
+    "claimed": "✓ 利益受け取り済み",
+    "nothing": "このマーケットで受け取れる利益はありません。また次回！"
+  },
+  "resolve": {
+    "title": "マーケットを解決",
+    "warning": "⚠️ この操作は取り消せません。確定後、勝者はすぐに賞金を受け取れるようになります。",
+    "choose": "結果を選択",
+    "confirm": "確定：{side}",
+    "confirming": "確定中..."
+  },
+  "create": {
+    "title": "マーケットを作成",
+    "question": "質問",
+    "placeholder": "例：「BTC は12月31日までに15万ドルを超えるか？」",
+    "endLabel": "ベット締切",
+    "endHelp": "この日付以降は誰もベットできなくなり、マーケットを解決できるようになります。",
+    "cta": "マーケットを作成",
+    "confirming": "確定中...",
+    "connect": "ウォレットを接続"
+  },
+  "activity": {
+    "title": "ベット履歴",
+    "empty": "まだベットがありません。",
+    "loading": "読み込み中..."
+  },
+  "config": {
+    "title": "コントラクトが未設定です",
+    "body": "コントラクトをデプロイし（README 参照）、web/.env.local に NEXT_PUBLIC_MARKET_ADDRESS と NEXT_PUBLIC_USDC_ADDRESS を設定してサーバーを再起動してください。"
+  },
+  "myMarkets": {
+    "title": "マイマーケット",
+    "tabCreated": "作成済み（{count}）",
+    "tabBets": "自分のベット（{count}）",
+    "pendingAlert": "{count} 件のマーケットが解決待ちです",
+    "pendingHint": "— 終了したマーケットをクリックして結果を確定してください。",
+    "connectTitle": "ウォレットを接続",
+    "connectBody": "作成したマーケットやベットを見るには、まずウォレットを接続してください。",
+    "emptyCreated": "まだマーケットを作成していません",
+    "emptyBets": "まだベットしていません",
+    "emptyHint": "ホームページから始めましょう。"
+  }
+}

@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Variables de thème — identité Arc Network
+   :root  = light mode (fond clair, navy en texte, violet en accent)
+   .dark  = dark mode  (fond navy sombre, blanc en texte)
+   Format "R G B" pour permettre les opacités Tailwind (/10, /50...).
+   ------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+
+  --background: 245 247 250; /* gris très clair */
+  --surface: 255 255 255; /* cartes blanches */
+  --surface-hover: 238 242 247;
+  --border: 220 227 236;
+  --border-strong: 185 198 214;
+  --navy: 20 52 83; /* #143453 */
+  --foreground: 20 52 83; /* texte principal = navy Arc */
+  --muted: 92 113 137;
+  --primary: 102 58 115; /* #663A73 — violet Arc */
+  --primary-hover: 122 70 138;
+  --primary-light: 102 58 115; /* en light, l'accent texte = violet profond */
+  --yes: 5 150 105; /* emerald-600, plus contrasté sur fond clair */
+  --no: 225 29 72; /* rose-600 */
+
+  --shadow-card: 0 1px 2px rgba(16, 42, 67, 0.06),
+    0 4px 16px -8px rgba(16, 42, 67, 0.12);
+  --shadow-card-hover: 0 2px 4px rgba(16, 42, 67, 0.08),
+    0 12px 32px -12px rgba(102, 58, 115, 0.25);
+  --page-glow: rgba(102, 58, 115, 0.08);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: 10 20 32; /* navy quasi noir */
+  --surface: 18 39 64; /* cartes navy */
+  --surface-hover: 23 48 78;
+  --border: 30 58 87;
+  --border-strong: 44 78 115;
+  --navy: 20 52 83;
+  --foreground: 255 255 255; /* texte blanc */
+  --muted: 140 162 184;
+  --primary: 102 58 115;
+  --primary-hover: 122 70 138;
+  --primary-light: 180 138 196; /* violet clair lisible sur fond sombre */
+  --yes: 16 185 129; /* emerald-500 */
+  --no: 244 63 94; /* rose-500 */
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3),
+    0 4px 16px -8px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 12px 32px -12px rgba(102, 58, 115, 0.45);
+  --page-glow: rgba(102, 58, 115, 0.22);
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  /* Léger halo violet Arc en haut de page pour la profondeur */
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    var(--page-glow),
+    transparent
+  );
+  background-repeat: no-repeat;
+  transition: background-color 0.25s ease;
+}
+
+/* Chiffres alignés (stats, montants) — style dashboard */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbar discrète assortie au thème */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border-strong));
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--muted) / 0.6);
+}
+
+/* Sélection de texte aux couleurs de la marque */
+::selection {
+  background: rgba(102, 58, 115, 0.4);
+}

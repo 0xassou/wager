@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "Wager — Mercado de predicción en Arc Testnet",
+    "description": "Crea un mercado, toma una posición, cobra tus ganancias — todo on-chain, liquidado en USDC en Arc Testnet."
+  },
+  "nav": {
+    "markets": "Mercados",
+    "myMarkets": "Mis mercados"
+  },
+  "theme": {
+    "toLight": "Cambiar a modo claro",
+    "toDark": "Cambiar a modo oscuro"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "footer": {
+    "disclaimer": "Wager — MVP en Arc Testnet · Solo USDC de prueba, sin valor real"
+  },
+  "home": {
+    "eyebrow": "Mercado de predicción · Arc Testnet",
+    "title1": "Tu opinión cuenta.",
+    "title2": "En USDC, al instante.",
+    "subtitle": "Crea un mercado, toma una posición, cobra tus ganancias — todo on-chain, liquidado en USDC.",
+    "cta": "Abrir una posición",
+    "statMarkets": "Mercados",
+    "statVolume": "Volumen total",
+    "emptyTitle": "Todavía no hay mercados",
+    "emptySubtitle": "¡Sé el primero en crear uno!"
+  },
+  "dataError": {
+    "title": "No se pudieron cargar los mercados",
+    "body": "El RPC de Arc Testnet no respondió a tiempo. Esto puede ocurrir por limitación de solicitudes — inténtalo de nuevo.",
+    "retry": "Reintentar"
+  },
+  "status": {
+    "open": "Abierto",
+    "pending": "Pendiente de resolución",
+    "resolvedYes": "Resuelto · Sí",
+    "resolvedNo": "Resuelto · No"
+  },
+  "common": {
+    "yes": "Sí",
+    "no": "No"
+  },
+  "card": {
+    "bets": "{count, plural, one {# apuesta} other {# apuestas}}"
+  },
+  "time": {
+    "ended": "Finalizado",
+    "d": "d",
+    "h": "h",
+    "m": "m",
+    "s": "s"
+  },
+  "detail": {
+    "back": "Todos los mercados",
+    "createdBy": "Creado por",
+    "you": "ti",
+    "endsIn": "Las apuestas terminan en",
+    "endedOn": "Apuestas cerradas el {date}",
+    "poolYes": "Pool Sí",
+    "poolNo": "Pool No",
+    "volume": "Volumen",
+    "actionRequired": "Acción requerida:",
+    "actionBody": "este mercado ha terminado. Como creador, debes declarar el resultado.",
+    "resolveCta": "Resolver mercado",
+    "waiting": "Esperando a que el creador del mercado declare el resultado.",
+    "myPosition": "Mi posición",
+    "onYes": "En Sí",
+    "onNo": "En No"
+  },
+  "bet": {
+    "title": "Realizar una apuesta",
+    "amount": "Cantidad (USDC)",
+    "balanceMax": "Saldo: {balance} — Máx",
+    "potential": "Ganancia potencial",
+    "connect": "Conecta tu wallet",
+    "approve": "1/2 · Aprobar {amount} USDC",
+    "betOn": "Apostar {amount} USDC a {side}",
+    "steps": "Paso 1: aprobar USDC · Paso 2: confirmar la apuesta"
+  },
+  "claim": {
+    "winnings": "Tus ganancias",
+    "cta": "Reclamar ganancias",
+    "claimed": "✓ Ganancias reclamadas",
+    "nothing": "No hay ganancias que reclamar en este mercado. ¡Más suerte la próxima vez!"
+  },
+  "resolve": {
+    "title": "Resolver mercado",
+    "warning": "⚠️ Esta acción es definitiva. Los ganadores podrán reclamar sus premios inmediatamente después.",
+    "choose": "Elige un resultado",
+    "confirm": "Confirmar: {side}",
+    "confirming": "Confirmando..."
+  },
+  "create": {
+    "title": "Crear un mercado",
+    "question": "Pregunta",
+    "placeholder": "Ej: \"¿Superará BTC los 150k$ antes del 31 de diciembre?\"",
+    "endLabel": "Fecha límite de apuestas",
+    "endHelp": "Después de esta fecha, nadie podrá apostar y tú podrás resolver el mercado.",
+    "cta": "Crear mercado",
+    "confirming": "Confirmando...",
+    "connect": "Conecta tu wallet"
+  },
+  "activity": {
+    "title": "Historial de apuestas",
+    "empty": "Aún no hay apuestas.",
+    "loading": "Cargando..."
+  },
+  "config": {
+    "title": "Contrato no configurado",
+    "body": "Despliega el contrato (ver README), luego define NEXT_PUBLIC_MARKET_ADDRESS y NEXT_PUBLIC_USDC_ADDRESS en web/.env.local y reinicia el servidor."
+  },
+  "myMarkets": {
+    "title": "Mis mercados",
+    "tabCreated": "Creados ({count})",
+    "tabBets": "Mis apuestas ({count})",
+    "pendingAlert": "{count, plural, one {# mercado pendiente de resolución} other {# mercados pendientes de resolución}}",
+    "pendingHint": "— haz clic en un mercado finalizado para declarar su resultado.",
+    "connectTitle": "Conecta tu wallet",
+    "connectBody": "Para ver los mercados que creaste y tus apuestas, conecta primero tu wallet.",
+    "emptyCreated": "Todavía no has creado ningún mercado",
+    "emptyBets": "Todavía no has hecho ninguna apuesta",
+    "emptyHint": "Ve a la página de inicio para empezar."
+  }
+}
