@@ -29,9 +29,9 @@ export interface OddsPoint {
 /** Décalage (ms) du point de départ synthétique avant le premier pari. */
 const SYNTHETIC_START_OFFSET_MS = 60_000;
 
-export function useOddsHistory(marketId: number) {
+export function useOddsHistory(marketId: number, betCount?: number) {
   const publicClient = usePublicClient();
-  const { data: bets } = useBetLogs(marketId); // cache partagé avec ActivityFeed
+  const { data: bets } = useBetLogs(marketId, betCount); // cache partagé avec ActivityFeed
 
   return useQuery({
     queryKey: ["oddsHistory", marketId, bets?.length ?? 0],

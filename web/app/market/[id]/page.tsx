@@ -195,7 +195,7 @@ export default function MarketDetailPage() {
 
             {/* Évolution des cotes dans le temps — complète la barre ci-dessus */}
             <div className="mt-5">
-              <OddsChart marketId={marketId} />
+              <OddsChart marketId={marketId} betCount={Number(market.betCount)} />
             </div>
 
             {/* Pools + volume */}
@@ -220,7 +220,7 @@ export default function MarketDetailPage() {
           </Card>
 
           {/* Historique des paris */}
-          <ActivityFeed marketId={marketId} />
+          <ActivityFeed marketId={marketId} betCount={Number(market.betCount)} />
         </div>
 
         {/* ================= Colonne latérale ================= */}

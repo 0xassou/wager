@@ -11,12 +11,21 @@ import { Card } from "@/components/ui/card";
 import { useBetLogs } from "@/lib/bet-logs";
 import { cn, formatUsdc, shortAddress } from "@/lib/utils";
 
-export function ActivityFeed({ marketId }: { marketId: number }) {
+export function ActivityFeed({
+  marketId,
+  betCount,
+}: {
+  marketId: number;
+  /** Nombre de paris on-chain (market.betCount) — permet au fetch des
+   * logs de s'arrêter dès qu'il les a tous trouvés au lieu de toujours
+   * scanner 6 fenêtres de blocs. Optionnel : sans lui, scan complet. */
+  betCount?: number;
+}) {
   const t = useTranslations();
 
   // Logs BetPlaced (ordre chronologique, partagés avec OddsChart) —
   // on les affiche du plus récent au plus ancien.
-  const { data: sortedBets, isLoading } = useBetLogs(marketId);
+  const { data: sortedBets, isLoading } = useBetLogs(marketId, betCount);
   const bets = sortedBets ? [...sortedBets].reverse() : sortedBets;
 
   return (
