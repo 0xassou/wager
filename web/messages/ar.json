@@ -5,7 +5,8 @@
   },
   "nav": {
     "markets": "الأسواق",
-    "myMarkets": "أسواقي"
+    "myMarkets": "أسواقي",
+    "profile": "الملف الشخصي"
   },
   "theme": {
     "toLight": "التبديل إلى الوضع الفاتح",
@@ -19,14 +20,13 @@
   },
   "home": {
     "eyebrow": "سوق التنبؤات · Arc Testnet",
-    "title1": "رأيك مهم.",
-    "title2": "بعملة USDC، فورًا.",
-    "subtitle": "أنشئ سوقًا، اتخذ موقفًا، اجنِ أرباحك — كل ذلك على السلسلة، بتسوية بعملة USDC.",
+    "subtitle": "اتخذ موقفك، اجنِ أرباحك — بتسوية بعملة USDC، على السلسلة.",
     "cta": "فتح مركز",
     "statMarkets": "الأسواق",
     "statVolume": "الحجم الإجمالي",
     "emptyTitle": "لا توجد أسواق بعد",
-    "emptySubtitle": "كن أول من ينشئ سوقًا!"
+    "emptySubtitle": "كن أول من ينشئ سوقًا!",
+    "title": "كل رهان يروي المستقبل."
   },
   "dataError": {
     "title": "تعذر تحميل الأسواق",
@@ -37,7 +37,10 @@
     "open": "مفتوح",
     "pending": "في انتظار الحسم",
     "resolvedYes": "محسوم · نعم",
-    "resolvedNo": "محسوم · لا"
+    "resolvedNo": "محسوم · لا",
+    "proposed": "مقترح",
+    "disputed": "متنازع عليه",
+    "refunded": "مُسترد"
   },
   "common": {
     "yes": "نعم",
@@ -91,7 +94,8 @@
     "warning": "⚠️ هذا الإجراء نهائي. سيتمكن الفائزون من المطالبة بجوائزهم فور الحسم.",
     "choose": "اختر نتيجة",
     "confirm": "تأكيد: {side}",
-    "confirming": "جارٍ التأكيد..."
+    "confirming": "جارٍ التأكيد...",
+    "warningAdmin": "⚠️ لم يقترح المُنشئ نتيجة. بصفتك مالك العقد، يمكنك اقتراح نتيجة بدلاً منه — سيُفتح مع ذلك نافذة اعتراض قبل أن تصبح نهائية."
   },
   "create": {
     "title": "إنشاء سوق",
@@ -101,7 +105,8 @@
     "endHelp": "بعد هذا التاريخ، لن يتمكن أحد من الرهان وستتمكن من حسم السوق.",
     "cta": "إنشاء السوق",
     "confirming": "جارٍ التأكيد...",
-    "connect": "اربط محفظتك"
+    "connect": "اربط محفظتك",
+    "category": "الفئة"
   },
   "activity": {
     "title": "سجل الرهانات",
@@ -123,5 +128,82 @@
     "emptyCreated": "لم تُنشئ أي سوق بعد",
     "emptyBets": "لم تُراهن بعد",
     "emptyHint": "توجّه إلى الصفحة الرئيسية للبدء."
+  },
+  "categories": {
+    "all": "الكل",
+    "crypto": "كريبتو",
+    "sport": "رياضة",
+    "politics": "سياسة",
+    "tech": "تقنية",
+    "other": "أخرى"
+  },
+  "discover": {
+    "search": "ابحث عن سوق...",
+    "sort_popular": "الأكثر شعبية",
+    "sort_recent": "الأحدث",
+    "sort_ending": "يغلق قريبًا",
+    "noResults": "لا توجد أسواق تطابق عوامل التصفية."
+  },
+  "fees": {
+    "badge": "رسوم {rate}٪ فقط على الأرباح — أرخص من المنصات الكبرى",
+    "note": "تُطبق رسوم {rate}٪ على الأرباح فقط عند المطالبة."
+  },
+  "profile": {
+    "connectTitle": "اربط محفظتك",
+    "connectBody": "اربط محفظتك لعرض ملفك الشخصي وإحصاءاتك وسجل رهاناتك.",
+    "copyHint": "اضغط على العنوان لنسخه",
+    "copied": "تم نسخ العنوان!",
+    "badge_rookie": "مبتدئ",
+    "badge_active": "نشط",
+    "badge_expert": "خبير",
+    "statBets": "الرهانات",
+    "statWinRate": "نسبة النجاح",
+    "statNet": "صافي الربح",
+    "statCreated": "الأسواق المُنشأة",
+    "historyTitle": "سجل الرهانات",
+    "createdTitle": "الأسواق المُنشأة",
+    "betsEmpty": "لا رهانات بعد — توجّه إلى الأسواق للبدء.",
+    "createdEmpty": "لم تُنشئ أي سوق بعد.",
+    "result_won": "ربح",
+    "result_lost": "خسارة",
+    "result_pending": "قيد الانتظار",
+    "result_refunded": "مُسترد"
+  },
+  "follow": {
+    "follow": "تابع هذا السوق",
+    "following": "مُتابَع"
+  },
+  "notifications": {
+    "closingTitle": "السوق يغلق قريبًا",
+    "closingBody": "يغلق الرهان خلال أقل من ساعة: {question}",
+    "resolvedTitle": "تم حسم السوق",
+    "resolvedBody": "تم حسم سوق تتابعه: {question}",
+    "disputedTitle": "سوق متنازع عليه",
+    "disputedBody": "تم الاعتراض على سوق تتابعه وهو بانتظار التحكيم: {question}"
+  },
+  "resolution": {
+    "actionRequiredCreator": "إجراء مطلوب:",
+    "actionBodyCreator": "انتهى هذا السوق. اقترح نتيجة — ستمر بنافذة اعتراض قبل أن تصبح نهائية.",
+    "proposeCta": "اقتراح نتيجة",
+    "actionRequiredAdmin": "إجراء احتياطي للمشرف:",
+    "actionBodyAdmin": "لم يقترح المُنشئ نتيجة. بصفتك مالك العقد، يمكنك اقتراح نتيجة بدلاً منه.",
+    "proposeAdminCta": "اقتراح نتيجة (كمشرف)",
+    "waitingCreator": "في انتظار أن يقترح المُنشئ نتيجة.",
+    "proposedTitle": "نتيجة مقترحة",
+    "proposedBody": "اقترح المُنشئ \"{outcome}\" كنتيجة. يمكن لأي شخص الاعتراض عليها خلال النافذة أدناه.",
+    "disputeUntil": "قابل للاعتراض لمدة {time} · حتى {date}",
+    "windowClosed": "انتهت نافذة الاعتراض.",
+    "approveBond": "1/2 · الموافقة على وديعة {amount} USDC",
+    "disputeCta": "اعتراض · قفل {amount} USDC",
+    "bondHint": "تُسترد وديعتك إذا تم قبول اعتراضك، أو تُفقد لصالح الخزينة إذا لم يُقبل.",
+    "finalizeCta": "إنهاء النتيجة",
+    "disputedTitle": "متنازع عليه — بانتظار التحكيم",
+    "disputedBody": "اعترض {disputer} على النتيجة المقترحة (\"{outcome}\") بقفل {amount} USDC. سيحسم مالك العقد القرار النهائي.",
+    "arbitrateCta": "التحكيم في هذا الاعتراض",
+    "confirmOutcome": "تأكيد: {outcome}",
+    "overturnOutcome": "عكس القرار: {outcome}",
+    "waitingArbitration": "في انتظار أن يحكم مالك العقد في هذا الاعتراض.",
+    "waitingTimeoutReached": "لم يحسم المالك هذا الاعتراض أبدًا. يمكن لأي شخص تفعيل استرداد محايد أدناه.",
+    "forceRefundCta": "تفعيل الاسترداد المحايد (انتهت المهلة)"
   }
 }

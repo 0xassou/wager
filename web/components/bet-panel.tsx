@@ -31,6 +31,7 @@ import {
   type MarketData,
 } from "@/lib/contract";
 import { cn, formatUsdc, payoutMultiplier } from "@/lib/utils";
+import { FeeNote } from "@/components/fee-badge";
 
 interface BetPanelProps {
   marketId: number;
@@ -240,6 +241,8 @@ export function BetPanel({ marketId, market }: BetPanelProps) {
       </div>
 
       <p className="mt-3 text-center text-[11px] text-muted">{t("steps")}</p>
+      {/* Taux de frais lu on-chain (masqué si le contrat ne l'expose pas) */}
+      <FeeNote />
     </Card>
   );
 }

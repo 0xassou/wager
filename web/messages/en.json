@@ -5,7 +5,8 @@
   },
   "nav": {
     "markets": "Markets",
-    "myMarkets": "My Markets"
+    "myMarkets": "My Markets",
+    "profile": "Profile"
   },
   "theme": {
     "toLight": "Switch to light mode",
@@ -19,14 +20,13 @@
   },
   "home": {
     "eyebrow": "Prediction Market · Arc Testnet",
-    "title1": "Your take counts.",
-    "title2": "In USDC, on the spot.",
-    "subtitle": "Create a market, take a position, pocket your winnings — all on-chain, settled in USDC.",
+    "subtitle": "Stake your view, claim your winnings — settled in USDC, onchain.",
     "cta": "Open a position",
     "statMarkets": "Markets",
     "statVolume": "Total volume",
     "emptyTitle": "No markets yet",
-    "emptySubtitle": "Be the first to create one!"
+    "emptySubtitle": "Be the first to create one!",
+    "title": "Every wager tells the future."
   },
   "dataError": {
     "title": "Couldn't load markets",
@@ -37,7 +37,10 @@
     "open": "Open",
     "pending": "Awaiting resolution",
     "resolvedYes": "Resolved · Yes",
-    "resolvedNo": "Resolved · No"
+    "resolvedNo": "Resolved · No",
+    "proposed": "Proposed",
+    "disputed": "Disputed",
+    "refunded": "Refunded"
   },
   "common": {
     "yes": "Yes",
@@ -91,7 +94,8 @@
     "warning": "⚠️ This action is final. Winners will be able to claim their rewards immediately afterwards.",
     "choose": "Pick an outcome",
     "confirm": "Confirm: {side}",
-    "confirming": "Confirming..."
+    "confirming": "Confirming...",
+    "warningAdmin": "⚠️ The creator hasn't proposed a resolution. As the contract owner, you can propose one on their behalf — this still opens a dispute window before it's final."
   },
   "create": {
     "title": "Create a market",
@@ -101,7 +105,8 @@
     "endHelp": "After this date, no one can bet anymore and you will be able to resolve the market.",
     "cta": "Create market",
     "confirming": "Confirming...",
-    "connect": "Connect your wallet"
+    "connect": "Connect your wallet",
+    "category": "Category"
   },
   "activity": {
     "title": "Bet history",
@@ -123,5 +128,82 @@
     "emptyCreated": "You haven't created any markets yet",
     "emptyBets": "You haven't placed any bets yet",
     "emptyHint": "Head to the homepage to get started."
+  },
+  "categories": {
+    "all": "All",
+    "crypto": "Crypto",
+    "sport": "Sports",
+    "politics": "Politics",
+    "tech": "Tech",
+    "other": "Other"
+  },
+  "discover": {
+    "search": "Search markets...",
+    "sort_popular": "Popular",
+    "sort_recent": "Recent",
+    "sort_ending": "Ending soon",
+    "noResults": "No markets match your filters."
+  },
+  "fees": {
+    "badge": "Only {rate}% fee on winnings — cheaper than the big platforms",
+    "note": "A {rate}% fee applies to winnings only, at claim time."
+  },
+  "profile": {
+    "connectTitle": "Connect your wallet",
+    "connectBody": "Connect your wallet to see your profile, stats and betting history.",
+    "copyHint": "Click the address to copy it",
+    "copied": "Address copied!",
+    "badge_rookie": "Rookie",
+    "badge_active": "Active",
+    "badge_expert": "Expert",
+    "statBets": "Bets",
+    "statWinRate": "Win rate",
+    "statNet": "Net profit",
+    "statCreated": "Markets created",
+    "historyTitle": "Betting history",
+    "createdTitle": "Created markets",
+    "betsEmpty": "No bets yet — head to the markets to get started.",
+    "createdEmpty": "No markets created yet.",
+    "result_won": "Won",
+    "result_lost": "Lost",
+    "result_pending": "Pending",
+    "result_refunded": "Refunded"
+  },
+  "follow": {
+    "follow": "Follow this market",
+    "following": "Following"
+  },
+  "notifications": {
+    "closingTitle": "Market closing soon",
+    "closingBody": "Betting closes in less than 1 hour: {question}",
+    "resolvedTitle": "Market resolved",
+    "resolvedBody": "A market you follow has been resolved: {question}",
+    "disputedTitle": "Market disputed",
+    "disputedBody": "A market you follow has been disputed and awaits arbitration: {question}"
+  },
+  "resolution": {
+    "actionRequiredCreator": "Action required:",
+    "actionBodyCreator": "this market has ended. Propose a resolution — it will go through a dispute window before becoming final.",
+    "proposeCta": "Propose resolution",
+    "actionRequiredAdmin": "Admin fallback:",
+    "actionBodyAdmin": "the creator hasn't proposed a resolution. As the contract owner, you can propose one on their behalf.",
+    "proposeAdminCta": "Propose resolution (as admin)",
+    "waitingCreator": "Waiting for the creator to propose a resolution.",
+    "proposedTitle": "Resolution proposed",
+    "proposedBody": "The creator proposed \"{outcome}\" as the outcome. Anyone can dispute it during the window below.",
+    "disputeUntil": "Disputable for {time} · until {date}",
+    "windowClosed": "The dispute window has closed.",
+    "approveBond": "1/2 · Approve {amount} USDC bond",
+    "disputeCta": "Dispute · lock {amount} USDC",
+    "bondHint": "Your bond is refunded if the dispute is upheld, or forfeited to the treasury if not.",
+    "finalizeCta": "Finalize resolution",
+    "disputedTitle": "Disputed — awaiting arbitration",
+    "disputedBody": "{disputer} disputed the proposed outcome (\"{outcome}\") by locking {amount} USDC. The contract owner will make the final call.",
+    "arbitrateCta": "Arbitrate this dispute",
+    "confirmOutcome": "Confirm: {outcome}",
+    "overturnOutcome": "Overturn: {outcome}",
+    "waitingArbitration": "Waiting for the contract owner to arbitrate this dispute.",
+    "waitingTimeoutReached": "The owner never ruled on this dispute. Anyone can trigger a neutral refund below.",
+    "forceRefundCta": "Trigger neutral refund (timeout)"
   }
 }

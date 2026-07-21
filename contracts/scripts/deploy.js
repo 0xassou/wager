@@ -44,9 +44,12 @@ async function main() {
   // ------------------------------------------------------------------
   // 2. Déployer le PredictionMarket
   // ------------------------------------------------------------------
+  // Trésorerie des frais : TREASURY_ADDRESS du .env, sinon le déployeur.
+  const treasuryAddress = process.env.TREASURY_ADDRESS || deployer.address;
   console.log("→ Déploiement du PredictionMarket...");
+  console.log("   Trésorerie des frais :", treasuryAddress);
   const PredictionMarket = await hre.ethers.getContractFactory("PredictionMarket");
-  const market = await PredictionMarket.deploy(usdcAddress);
+  const market = await PredictionMarket.deploy(usdcAddress, treasuryAddress);
   await market.waitForDeployment();
   const marketAddress = await market.getAddress();
 

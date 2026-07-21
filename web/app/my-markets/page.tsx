@@ -21,7 +21,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { MarketCard } from "@/components/market-card";
 import { ConfigWarning } from "@/components/config-warning";
-import { MARKET_ADDRESS, marketAbi, isConfigured } from "@/lib/contract";
+import { MARKET_ADDRESS, PHASE, marketAbi, isConfigured } from "@/lib/contract";
 import { cn } from "@/lib/utils";
 
 type Tab = "created" | "bets";
@@ -118,10 +118,10 @@ export default function MyMarketsPage() {
     [markets, positions]
   );
 
-  // Marchés créés terminés mais non résolus → action requise.
+  // Marchés créés terminés mais sans résolution proposée → action requise.
   const pendingResolution = createdMarkets.filter(
     ({ market }) =>
-      !market.resolved && Number(market.endTime) * 1000 <= Date.now()
+      market.phase === PHASE.OPEN && Number(market.endTime) * 1000 <= Date.now()
   ).length;
 
   if (!isConnected) {

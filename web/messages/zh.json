@@ -5,7 +5,8 @@
   },
   "nav": {
     "markets": "市场",
-    "myMarkets": "我的市场"
+    "myMarkets": "我的市场",
+    "profile": "个人主页"
   },
   "theme": {
     "toLight": "切换到浅色模式",
@@ -19,14 +20,13 @@
   },
   "home": {
     "eyebrow": "预测市场 · Arc 测试网",
-    "title1": "你的判断很重要。",
-    "title2": "用 USDC，立即变现。",
-    "subtitle": "创建市场，建立仓位，赚取收益——全部链上完成，以 USDC 结算。",
+    "subtitle": "表明立场，赢取收益——以 USDC 链上结算。",
     "cta": "建立仓位",
     "statMarkets": "市场数",
     "statVolume": "总交易量",
     "emptyTitle": "暂无市场",
-    "emptySubtitle": "成为第一个创建市场的人！"
+    "emptySubtitle": "成为第一个创建市场的人！",
+    "title": "每一次下注，都在预言未来。"
   },
   "dataError": {
     "title": "无法加载市场",
@@ -37,7 +37,10 @@
     "open": "进行中",
     "pending": "待结算",
     "resolvedYes": "已结算 · 是",
-    "resolvedNo": "已结算 · 否"
+    "resolvedNo": "已结算 · 否",
+    "proposed": "已提议",
+    "disputed": "有争议",
+    "refunded": "已退款"
   },
   "common": {
     "yes": "是",
@@ -91,7 +94,8 @@
     "warning": "⚠️ 此操作不可撤销。结算后获胜者可立即领取奖励。",
     "choose": "选择结果",
     "confirm": "确认：{side}",
-    "confirming": "确认中..."
+    "confirming": "确认中...",
+    "warningAdmin": "⚠️ 创建者尚未提议结果。作为合约所有者，你可以代替创建者提议——这同样会开启一个质疑窗口，之后才会最终生效。"
   },
   "create": {
     "title": "创建市场",
@@ -101,7 +105,8 @@
     "endHelp": "此日期之后将无法再投注，你可以结算该市场。",
     "cta": "创建市场",
     "confirming": "确认中...",
-    "connect": "连接钱包"
+    "connect": "连接钱包",
+    "category": "类别"
   },
   "activity": {
     "title": "投注记录",
@@ -123,5 +128,82 @@
     "emptyCreated": "你还没有创建任何市场",
     "emptyBets": "你还没有进行任何投注",
     "emptyHint": "前往首页开始使用。"
+  },
+  "categories": {
+    "all": "全部",
+    "crypto": "加密货币",
+    "sport": "体育",
+    "politics": "政治",
+    "tech": "科技",
+    "other": "其他"
+  },
+  "discover": {
+    "search": "搜索市场…",
+    "sort_popular": "热门",
+    "sort_recent": "最新",
+    "sort_ending": "即将截止",
+    "noResults": "没有符合筛选条件的市场。"
+  },
+  "fees": {
+    "badge": "盈利仅收 {rate}% 手续费——比各大平台更便宜",
+    "note": "领取时仅对盈利部分收取 {rate}% 手续费。"
+  },
+  "profile": {
+    "connectTitle": "连接钱包",
+    "connectBody": "连接钱包以查看你的个人主页、统计数据和投注历史。",
+    "copyHint": "点击地址即可复制",
+    "copied": "地址已复制！",
+    "badge_rookie": "新手",
+    "badge_active": "活跃",
+    "badge_expert": "专家",
+    "statBets": "投注数",
+    "statWinRate": "胜率",
+    "statNet": "净收益",
+    "statCreated": "创建的市场",
+    "historyTitle": "投注历史",
+    "createdTitle": "创建的市场",
+    "betsEmpty": "还没有投注——前往市场开始吧。",
+    "createdEmpty": "还没有创建市场。",
+    "result_won": "赢",
+    "result_lost": "输",
+    "result_pending": "待定",
+    "result_refunded": "已退款"
+  },
+  "follow": {
+    "follow": "关注此市场",
+    "following": "已关注"
+  },
+  "notifications": {
+    "closingTitle": "市场即将截止",
+    "closingBody": "投注将在 1 小时内截止：{question}",
+    "resolvedTitle": "市场已解决",
+    "resolvedBody": "你关注的市场已出结果:{question}",
+    "disputedTitle": "市场存在争议",
+    "disputedBody": "你关注的市场出现争议，正在等待仲裁：{question}"
+  },
+  "resolution": {
+    "actionRequiredCreator": "需要操作：",
+    "actionBodyCreator": "该市场已结束。请提议一个结果——它将经过质疑窗口后才会最终生效。",
+    "proposeCta": "提议结果",
+    "actionRequiredAdmin": "管理员兜底：",
+    "actionBodyAdmin": "创建者尚未提议结果。作为合约所有者，你可以代替创建者提议。",
+    "proposeAdminCta": "提议结果（以管理员身份）",
+    "waitingCreator": "等待创建者提议结果。",
+    "proposedTitle": "结果已提议",
+    "proposedBody": "创建者提议的结果为“{outcome}”。任何人都可以在下方的窗口期内提出质疑。",
+    "disputeUntil": "可质疑 {time} · 截止于 {date}",
+    "windowClosed": "质疑窗口已结束。",
+    "approveBond": "1/2 · 批准 {amount} USDC 保证金",
+    "disputeCta": "质疑 · 锁定 {amount} USDC",
+    "bondHint": "如果质疑成立，保证金将退还给你；否则将归入国库。",
+    "finalizeCta": "最终确定结果",
+    "disputedTitle": "有争议——等待仲裁",
+    "disputedBody": "{disputer} 对提议的结果（“{outcome}”）提出质疑，锁定了 {amount} USDC。合约所有者将做出最终裁决。",
+    "arbitrateCta": "裁决此争议",
+    "confirmOutcome": "确认：{outcome}",
+    "overturnOutcome": "推翻：{outcome}",
+    "waitingArbitration": "等待合约所有者裁决此争议。",
+    "waitingTimeoutReached": "所有者一直未裁决此争议。任何人都可以在下方触发中立退款。",
+    "forceRefundCta": "触发中立退款（已超时）"
   }
 }

@@ -5,7 +5,8 @@
   },
   "nav": {
     "markets": "マーケット",
-    "myMarkets": "マイマーケット"
+    "myMarkets": "マイマーケット",
+    "profile": "プロフィール"
   },
   "theme": {
     "toLight": "ライトモードに切り替え",
@@ -19,14 +20,13 @@
   },
   "home": {
     "eyebrow": "予測市場 · Arc テストネット",
-    "title1": "あなたの見立てがすべて。",
-    "title2": "USDC で、その場で。",
-    "subtitle": "マーケットを作成し、ポジションを取り、利益を手に入れよう——すべてオンチェーンで、USDC で決済。",
+    "subtitle": "自分の見立てに賭け、利益を受け取る——USDC でオンチェーン決済。",
     "cta": "ポジションを取る",
     "statMarkets": "マーケット数",
     "statVolume": "総取引量",
     "emptyTitle": "まだマーケットがありません",
-    "emptySubtitle": "最初のマーケットを作成しましょう！"
+    "emptySubtitle": "最初のマーケットを作成しましょう！",
+    "title": "すべての賭けが、未来を語る。"
   },
   "dataError": {
     "title": "マーケットを読み込めませんでした",
@@ -37,7 +37,10 @@
     "open": "受付中",
     "pending": "解決待ち",
     "resolvedYes": "解決済み · Yes",
-    "resolvedNo": "解決済み · No"
+    "resolvedNo": "解決済み · No",
+    "proposed": "提案済み",
+    "disputed": "異議あり",
+    "refunded": "返金済み"
   },
   "common": {
     "yes": "Yes",
@@ -91,7 +94,8 @@
     "warning": "⚠️ この操作は取り消せません。確定後、勝者はすぐに賞金を受け取れるようになります。",
     "choose": "結果を選択",
     "confirm": "確定：{side}",
-    "confirming": "確定中..."
+    "confirming": "確定中...",
+    "warningAdmin": "⚠️ 作成者はまだ結果を提案していません。コントラクトのオーナーとして、代わりに提案できます——その場合も、確定前に異議申し立て期間が設けられます。"
   },
   "create": {
     "title": "マーケットを作成",
@@ -101,7 +105,8 @@
     "endHelp": "この日付以降は誰もベットできなくなり、マーケットを解決できるようになります。",
     "cta": "マーケットを作成",
     "confirming": "確定中...",
-    "connect": "ウォレットを接続"
+    "connect": "ウォレットを接続",
+    "category": "カテゴリー"
   },
   "activity": {
     "title": "ベット履歴",
@@ -123,5 +128,82 @@
     "emptyCreated": "まだマーケットを作成していません",
     "emptyBets": "まだベットしていません",
     "emptyHint": "ホームページから始めましょう。"
+  },
+  "categories": {
+    "all": "すべて",
+    "crypto": "暗号資産",
+    "sport": "スポーツ",
+    "politics": "政治",
+    "tech": "テック",
+    "other": "その他"
+  },
+  "discover": {
+    "search": "マーケットを検索…",
+    "sort_popular": "人気",
+    "sort_recent": "新着",
+    "sort_ending": "まもなく締切",
+    "noResults": "条件に一致するマーケットがありません。"
+  },
+  "fees": {
+    "badge": "利益への手数料はわずか {rate}%——大手プラットフォームよりお得",
+    "note": "手数料 {rate}% は受け取り時に利益部分にのみ適用されます。"
+  },
+  "profile": {
+    "connectTitle": "ウォレットを接続",
+    "connectBody": "ウォレットを接続すると、プロフィール・統計・ベット履歴を確認できます。",
+    "copyHint": "アドレスをクリックしてコピー",
+    "copied": "アドレスをコピーしました！",
+    "badge_rookie": "ビギナー",
+    "badge_active": "アクティブ",
+    "badge_expert": "エキスパート",
+    "statBets": "ベット数",
+    "statWinRate": "勝率",
+    "statNet": "純利益",
+    "statCreated": "作成マーケット",
+    "historyTitle": "ベット履歴",
+    "createdTitle": "作成したマーケット",
+    "betsEmpty": "まだベットがありません——マーケットから始めましょう。",
+    "createdEmpty": "まだマーケットを作成していません。",
+    "result_won": "勝ち",
+    "result_lost": "負け",
+    "result_pending": "未確定",
+    "result_refunded": "返金済み"
+  },
+  "follow": {
+    "follow": "このマーケットをフォロー",
+    "following": "フォロー中"
+  },
+  "notifications": {
+    "closingTitle": "まもなく締切のマーケット",
+    "closingBody": "ベット締切まで1時間を切りました:{question}",
+    "resolvedTitle": "マーケットが解決されました",
+    "resolvedBody": "フォロー中のマーケットが解決されました:{question}",
+    "disputedTitle": "マーケットに異議あり",
+    "disputedBody": "フォロー中のマーケットに異議が申し立てられ、裁定待ちです：{question}"
+  },
+  "resolution": {
+    "actionRequiredCreator": "対応が必要です：",
+    "actionBodyCreator": "このマーケットは終了しました。結果を提案してください——確定前に異議申し立て期間があります。",
+    "proposeCta": "結果を提案",
+    "actionRequiredAdmin": "管理者によるフォールバック：",
+    "actionBodyAdmin": "作成者はまだ結果を提案していません。コントラクトのオーナーとして、代わりに提案できます。",
+    "proposeAdminCta": "結果を提案（管理者として）",
+    "waitingCreator": "作成者による結果の提案を待っています。",
+    "proposedTitle": "結果が提案されました",
+    "proposedBody": "作成者は「{outcome}」を結果として提案しました。以下の期間中は誰でも異議を申し立てられます。",
+    "disputeUntil": "あと{time}異議申し立て可能 · {date}まで",
+    "windowClosed": "異議申し立て期間は終了しました。",
+    "approveBond": "1/2 · {amount} USDC の保証金を承認",
+    "disputeCta": "異議を申し立てる · {amount} USDC をロック",
+    "bondHint": "異議が認められれば保証金は返金され、認められなければ国庫に没収されます。",
+    "finalizeCta": "結果を確定",
+    "disputedTitle": "異議あり——裁定待ち",
+    "disputedBody": "{disputer} が提案された結果（「{outcome}」）に異議を申し立て、{amount} USDC をロックしました。コントラクトのオーナーが最終判断を下します。",
+    "arbitrateCta": "この異議を裁定する",
+    "confirmOutcome": "確定：{outcome}",
+    "overturnOutcome": "覆す：{outcome}",
+    "waitingArbitration": "コントラクトのオーナーによるこの異議の裁定を待っています。",
+    "waitingTimeoutReached": "オーナーはこの異議を裁定しませんでした。誰でも以下から中立的な返金を実行できます。",
+    "forceRefundCta": "中立的な返金を実行（タイムアウト）"
   }
 }

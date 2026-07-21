@@ -1,9 +1,14 @@
 "use client";
 
 /**
- * Modal de résolution — visible UNIQUEMENT par le créateur du marché,
- * une fois la date de fin passée. Le créateur choisit le résultat
- * (Oui ou Non) puis confirme la transaction resolve().
+ * Modal de proposition de résolution — première étape du cycle en
+ * plusieurs temps (voir PredictionMarket.sol). Le choix confirmé ici
+ * n'est PAS définitif : il ouvre une fenêtre de contestation avant de
+ * pouvoir être finalisé (voir ResolutionPanel).
+ *
+ * `asAdmin` : true quand c'est le owner qui propose à la place d'un
+ * créateur resté inactif (adminProposeResolution au lieu de
+ * proposeResolution) — même UI, fonction de contrat différente.
  */
 import { useEffect, useState } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
@@ -15,14 +20,21 @@ import { Button } from "@/components/ui/button";
 import { MARKET_ADDRESS, marketAbi, OUTCOME } from "@/lib/contract";
 import { cn } from "@/lib/utils";
 
-interface ResolveModalProps {
+interface ProposeResolutionModalProps {
   open: boolean;
   onClose: () => void;
   marketId: number;
   question: string;
+  asAdmin?: boolean;
 }
 
-export function ResolveModal({ open, onClose, marketId, question }: ResolveModalProps) {
+export function ProposeResolutionModal({
+  open,
+  onClose,
+  marketId,
+  question,
+  asAdmin = false,
+}: ProposeResolutionModalProps) {
   const queryClient = useQueryClient();
   const [choice, setChoice] = useState<"yes" | "no" | null>(null);
   const t = useTranslations("resolve");
@@ -33,7 +45,6 @@ export function ResolveModal({ open, onClose, marketId, question }: ResolveModal
     hash: txHash,
   });
 
-  // Transaction confirmée : rafraîchir et fermer.
   useEffect(() => {
     if (isSuccess) {
       queryClient.invalidateQueries();
@@ -42,12 +53,12 @@ export function ResolveModal({ open, onClose, marketId, question }: ResolveModal
     }
   }, [isSuccess, onClose, queryClient, reset]);
 
-  const handleResolve = () => {
+  const handlePropose = () => {
     if (!choice) return;
     writeContract({
       address: MARKET_ADDRESS,
       abi: marketAbi,
-      functionName: "resolve",
+      functionName: asAdmin ? "adminProposeResolution" : "proposeResolution",
       args: [BigInt(marketId), choice === "yes" ? OUTCOME.YES : OUTCOME.NO],
     });
   };
@@ -59,9 +70,11 @@ export function ResolveModal({ open, onClose, marketId, question }: ResolveModal
           {question}
         </p>
 
-        <p className="text-xs text-muted">{t("warning")}</p>
+        <p className="text-xs text-muted">
+          {asAdmin ? t("warningAdmin") : t("warning")}
+        </p>
 
-        {/* Choix du résultat */}
+        {/* Choix du résultat proposé */}
         <div className="grid grid-cols-2 gap-3">
           <button
             onClick={() => setChoice("yes")}
@@ -119,7 +132,7 @@ export function ResolveModal({ open, onClose, marketId, question }: ResolveModal
           size="lg"
           loading={isPending || isConfirming}
           disabled={!choice}
-          onClick={handleResolve}
+          onClick={handlePropose}
         >
           {isConfirming
             ? t("confirming")
