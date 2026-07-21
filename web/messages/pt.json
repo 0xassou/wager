@@ -205,5 +205,9 @@
     "waitingArbitration": "Aguardando o proprietário do contrato arbitrar esta contestação.",
     "waitingTimeoutReached": "O proprietário nunca decidiu esta contestação. Qualquer pessoa pode acionar um reembolso neutro abaixo.",
     "forceRefundCta": "Acionar reembolso neutro (tempo esgotado)"
+  },
+  "chart": {
+    "title": "Histórico de cotações",
+    "notEnoughData": "Ainda não há apostas suficientes para um gráfico — volte em breve."
   }
 }

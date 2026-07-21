@@ -25,6 +25,7 @@ import { ClaimPanel } from "@/components/claim-panel";
 import { ResolutionPanel } from "@/components/resolution-panel";
 import { ProposeResolutionModal } from "@/components/propose-resolution-modal";
 import { ActivityFeed } from "@/components/activity-feed";
+import { OddsChart } from "@/components/odds-chart";
 import { FollowButton } from "@/components/follow-button";
 import { MARKET_ADDRESS, PHASE, marketAbi, isConfigured } from "@/lib/contract";
 import { parseQuestion } from "@/lib/categories";
@@ -187,9 +188,14 @@ export default function MarketDetailPage() {
               )}
             </div>
 
-            {/* Cotes principales */}
+            {/* Cotes principales — résumé instantané */}
             <div className="mt-6">
               <OddsBar yesPercent={pct} />
+            </div>
+
+            {/* Évolution des cotes dans le temps — complète la barre ci-dessus */}
+            <div className="mt-5">
+              <OddsChart marketId={marketId} />
             </div>
 
             {/* Pools + volume */}

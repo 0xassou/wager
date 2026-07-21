@@ -205,5 +205,9 @@
     "waitingArbitration": "Esperando a que el propietario del contrato arbitre esta impugnación.",
     "waitingTimeoutReached": "El propietario nunca resolvió esta impugnación. Cualquiera puede activar un reembolso neutral abajo.",
     "forceRefundCta": "Activar reembolso neutral (tiempo agotado)"
+  },
+  "chart": {
+    "title": "Historial de cuotas",
+    "notEnoughData": "Aún no hay suficientes apuestas para un gráfico — vuelve pronto."
   }
 }

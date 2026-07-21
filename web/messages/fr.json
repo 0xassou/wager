@@ -205,5 +205,9 @@
     "waitingArbitration": "En attente de l'arbitrage du owner du contrat sur cette contestation.",
     "waitingTimeoutReached": "Le owner n'a jamais tranché cette contestation. N'importe qui peut déclencher un remboursement neutre ci-dessous.",
     "forceRefundCta": "Déclencher le remboursement neutre (délai dépassé)"
+  },
+  "chart": {
+    "title": "Historique des cotes",
+    "notEnoughData": "Pas encore assez de paris pour un graphique — reviens bientôt."
   }
 }

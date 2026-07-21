@@ -205,5 +205,9 @@
     "waitingArbitration": "等待合约所有者裁决此争议。",
     "waitingTimeoutReached": "所有者一直未裁决此争议。任何人都可以在下方触发中立退款。",
     "forceRefundCta": "触发中立退款（已超时）"
+  },
+  "chart": {
+    "title": "赔率走势",
+    "notEnoughData": "投注数量还不足以生成图表——请稍后再来查看。"
   }
 }
