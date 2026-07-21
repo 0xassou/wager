@@ -23,6 +23,7 @@ import { useBetLogs } from "./bet-logs";
 export interface OddsPoint {
   time: number; // timestamp en millisecondes
   pct: number; // % "Oui", de 0 à 100
+  noPct: number; // % "Non" = 100 - pct (pas de recalcul depuis les logs, simple complément)
 }
 
 /** Décalage (ms) du point de départ synthétique avant le premier pari. */
@@ -35,6 +36,11 @@ export function useOddsHistory(marketId: number) {
   return useQuery({
     queryKey: ["oddsHistory", marketId, bets?.length ?? 0],
     enabled: !!publicClient && !!bets,
+    // Recalcule périodiquement sans reload complet, cohérent avec le
+    // reste du site (useBetLogs se rafraîchit déjà toutes les 30s ;
+    // dès que de nouveaux paris arrivent, la clé ci-dessus change et
+    // ce recalcul les intègre).
+    refetchInterval: 30_000,
     queryFn: async (): Promise<{ points: OddsPoint[]; betCount: number }> => {
       if (!bets || bets.length === 0) return { points: [], betCount: 0 };
 
@@ -52,7 +58,7 @@ export function useOddsHistory(marketId: number) {
 
         const firstBetTime = timeByBlock.get(bets[0].blockNumber ?? 0n) ?? Date.now();
         const points: OddsPoint[] = [
-          { time: firstBetTime - SYNTHETIC_START_OFFSET_MS, pct: 50 },
+          { time: firstBetTime - SYNTHETIC_START_OFFSET_MS, pct: 50, noPct: 50 },
         ];
 
         let yes = 0n;
@@ -66,6 +72,7 @@ export function useOddsHistory(marketId: number) {
           points.push({
             time: timeByBlock.get(log.blockNumber ?? 0n) ?? firstBetTime,
             pct,
+            noPct: 100 - pct,
           });
         }
 

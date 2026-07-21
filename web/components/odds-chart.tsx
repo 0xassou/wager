@@ -5,8 +5,9 @@
  * complète la barre de pourcentage instantanée (OddsBar), ne la
  * remplace pas.
  *
- * Une seule ligne = % "Oui" (le % "Non" s'en déduit : 100 − valeur).
- * Ligne de référence pointillée à 50 % comme repère visuel.
+ * Deux lignes : % "Oui" (vert) et % "Non" (rouge, = 100 − % Oui, pas
+ * de recalcul séparé depuis les logs). Ligne de référence pointillée
+ * à 50 % comme repère visuel.
  *
  * Si le marché a moins de 2 paris, il n'y a pas assez de points pour
  * qu'un graphique ait du sens : on affiche un état dégradé simple
@@ -29,10 +30,12 @@ import { useOddsHistory } from "@/lib/use-odds-history";
 import { Skeleton } from "@/components/ui/skeleton";
 
 /** Couleurs résolues par thème — recharts a besoin de valeurs SVG
- * concrètes, les classes Tailwind / variables CSS ne suffisent pas ici. */
+ * concrètes, les classes Tailwind / variables CSS ne suffisent pas ici.
+ * Reprennent exactement les teintes yes/no déjà utilisées ailleurs
+ * (voir app/globals.css --yes / --no). */
 const CHART_COLORS = {
-  dark: { yes: "#10B981", grid: "#1E3A57", axis: "#8CA2B8" },
-  light: { yes: "#059669", grid: "#DCE3EC", axis: "#5C7189" },
+  dark: { yes: "#10B981", no: "#F43F5E", grid: "#1E3A57", axis: "#8CA2B8" },
+  light: { yes: "#059669", no: "#E11D48", grid: "#DCE3EC", axis: "#5C7189" },
 };
 
 function formatTick(time: number, locale: string) {
@@ -49,23 +52,58 @@ function CustomTooltip({
   payload,
   locale,
   yesLabel,
+  noLabel,
+  colors,
 }: {
   active?: boolean;
-  payload?: { value: number; payload: { time: number } }[];
+  payload?: { value: number; dataKey: string; payload: { time: number } }[];
   locale: string;
   yesLabel: string;
+  noLabel: string;
+  colors: { yes: string; no: string };
 }) {
   if (!active || !payload || payload.length === 0) return null;
-  const point = payload[0];
+  const time = payload[0].payload.time;
+  const yesPoint = payload.find((p) => p.dataKey === "pct");
+  const noPoint = payload.find((p) => p.dataKey === "noPct");
 
   return (
     <div className="rounded-lg border border-border bg-surface px-3 py-2 shadow-card-hover">
-      <p className="text-sm font-bold text-yes">
-        {point.value}% {yesLabel}
-      </p>
-      <p className="mt-0.5 text-xs text-muted">
-        {formatTick(point.payload.time, locale)}
-      </p>
+      {yesPoint && (
+        <p className="text-sm font-bold" style={{ color: colors.yes }}>
+          {yesPoint.value}% {yesLabel}
+        </p>
+      )}
+      {noPoint && (
+        <p className="text-sm font-bold" style={{ color: colors.no }}>
+          {noPoint.value}% {noLabel}
+        </p>
+      )}
+      <p className="mt-0.5 text-xs text-muted">{formatTick(time, locale)}</p>
+    </div>
+  );
+}
+
+/** Légende compacte Oui/Non — couleurs alignées sur les lignes du graphique. */
+function ChartLegend({
+  yesLabel,
+  noLabel,
+  colors,
+}: {
+  yesLabel: string;
+  noLabel: string;
+  colors: { yes: string; no: string };
+}) {
+  return (
+    <div className="flex items-center gap-3 text-xs font-medium">
+      <span className="flex items-center gap-1.5">
+        <span className="h-0.5 w-3 rounded-full" style={{ backgroundColor: colors.yes }} />
+        <span style={{ color: colors.yes }}>{yesLabel}</span>
+      </span>
+      <span className="flex items-center gap-1.5">
+        <span className="h-0.5 w-3 rounded-full" style={{ backgroundColor: colors.no }} />
+        <span style={{ color: colors.no }}>{noLabel}</span>
+      </span>
     </div>
   );
 }
@@ -97,9 +135,12 @@ export function OddsChart({ marketId }: { marketId: number }) {
 
   return (
     <div>
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">
-        {t("title")}
-      </p>
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+          {t("title")}
+        </p>
+        <ChartLegend yesLabel={tc("yes")} noLabel={tc("no")} colors={colors} />
+      </div>
       <ResponsiveContainer width="100%" height={180}>
         <LineChart data={data.points} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
           <XAxis
@@ -125,13 +166,29 @@ export function OddsChart({ marketId }: { marketId: number }) {
           />
           <ReferenceLine y={50} stroke={colors.axis} strokeDasharray="4 4" strokeOpacity={0.6} />
           <Tooltip
-            content={<CustomTooltip locale={locale} yesLabel={tc("yes")} />}
+            content={
+              <CustomTooltip
+                locale={locale}
+                yesLabel={tc("yes")}
+                noLabel={tc("no")}
+                colors={colors}
+              />
+            }
             cursor={{ stroke: colors.grid }}
           />
           <Line
             type="monotone"
             dataKey="pct"
             stroke={colors.yes}
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ r: 4 }}
+            isAnimationActive={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="noPct"
+            stroke={colors.no}
             strokeWidth={2}
             dot={false}
             activeDot={{ r: 4 }}
