@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
+import { NotificationWatcher } from "@/components/notification-watcher";
 import { rtlLocales, type Locale } from "@/i18n/config";
 import "./globals.css";
 
@@ -44,6 +45,8 @@ export default async function RootLayout({
       <body className="min-h-screen font-sans">
         <NextIntlClientProvider messages={messages}>
           <Providers>
+            {/* Alerte sur les marchés suivis (clôture proche / résolution) */}
+            <NotificationWatcher />
             <Navbar />
             <main className="mx-auto w-full max-w-6xl px-4 pb-20 pt-8 sm:px-6">
               {children}

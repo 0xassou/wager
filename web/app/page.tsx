@@ -9,14 +9,24 @@
 import { useMemo, useState } from "react";
 import { useReadContract } from "wagmi";
 import { useTranslations } from "next-intl";
-import { AlertCircle, Plus, RefreshCw, Sparkles } from "lucide-react";
+import { AlertCircle, Plus, RefreshCw, Search, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { MarketCard } from "@/components/market-card";
 import { CreateMarketModal } from "@/components/create-market-modal";
 import { ConfigWarning } from "@/components/config-warning";
+import { FeeBadge } from "@/components/fee-badge";
 import { MARKET_ADDRESS, marketAbi, isConfigured } from "@/lib/contract";
-import { formatUsdc } from "@/lib/utils";
+import {
+  MARKET_CATEGORIES,
+  parseQuestion,
+  type MarketCategory,
+} from "@/lib/categories";
+import { cn, formatUsdc, isOpen } from "@/lib/utils";
+
+/** Modes de tri de la grille des marchés. */
+type SortMode = "popular" | "recent" | "ending";
 
 // Limite haute passée à getMarkets(offset, limit) : le contrat clampe déjà
 // `limit` au nombre réel de marchés (voir PredictionMarket.sol), donc un
@@ -27,7 +37,16 @@ const MAX_MARKETS = 500n;
 export default function HomePage() {
   const t = useTranslations("home");
   const tErr = useTranslations("dataError");
+  const tCat = useTranslations("categories");
+  const tDisc = useTranslations("discover");
   const [createOpen, setCreateOpen] = useState(false);
+
+  // Découverte : recherche plein texte, filtre catégorie, mode de tri.
+  const [search, setSearch] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState<"all" | MarketCategory>(
+    "all"
+  );
+  const [sortMode, setSortMode] = useState<SortMode>("popular");
 
   // Tous les marchés — un seul appel RPC, indépendant de marketCount
   // (voir MAX_MARKETS ci-dessus). Découpler les deux lectures évite que
@@ -87,14 +106,46 @@ export default function HomePage() {
     [markets]
   );
 
-  // Les plus récents d'abord (l'ID = l'index de création).
-  const sortedMarkets = useMemo(
-    () =>
-      (markets ?? [])
-        .map((market, id) => ({ market, id }))
-        .reverse(),
-    [markets]
-  );
+  // Filtrage (catégorie + recherche) puis tri, entièrement côté client
+  // sur les données déjà chargées — aucun appel RPC supplémentaire.
+  const sortedMarkets = useMemo(() => {
+    const query = search.trim().toLowerCase();
+
+    const withMeta = (markets ?? []).map((market, id) => ({
+      market,
+      id,
+      ...parseQuestion(market.question),
+    }));
+
+    const filtered = withMeta.filter(
+      ({ category, text }) =>
+        (categoryFilter === "all" || category === categoryFilter) &&
+        (query === "" || text.toLowerCase().includes(query))
+    );
+
+    switch (sortMode) {
+      case "popular":
+        // Volume total décroissant.
+        return filtered.sort((a, b) =>
+          Number(
+            b.market.yesPool + b.market.noPool - (a.market.yesPool + a.market.noPool)
+          )
+        );
+      case "ending": {
+        // Marchés encore ouverts d'abord, par échéance la plus proche ;
+        // les marchés terminés/résolus passent en fin de liste.
+        const openMarkets = filtered
+          .filter(({ market }) => isOpen(market))
+          .sort((a, b) => Number(a.market.endTime - b.market.endTime));
+        const closed = filtered.filter(({ market }) => !isOpen(market));
+        return [...openMarkets, ...closed];
+      }
+      case "recent":
+      default:
+        // L'ID = l'index de création : plus grand = plus récent.
+        return filtered.sort((a, b) => b.id - a.id);
+    }
+  }, [markets, search, categoryFilter, sortMode]);
 
   return (
     <div className="animate-fade-in">
@@ -108,13 +159,13 @@ export default function HomePage() {
             {t("eyebrow")}
           </p>
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            {t("title1")}
-            <br />
             <span className="bg-gradient-to-r from-primary-light to-foreground bg-clip-text text-transparent">
-              {t("title2")}
+              {t("title")}
             </span>
           </h1>
           <p className="mt-3 max-w-md text-sm text-muted">{t("subtitle")}</p>
+          {/* Argument frais bas — lu on-chain, masqué si indisponible */}
+          <FeeBadge className="mt-4" />
         </div>
 
         <Button size="lg" onClick={() => setCreateOpen(true)}>
@@ -139,8 +190,60 @@ export default function HomePage() {
           </p>
           <p className="mt-1.5 text-3xl font-bold tabular-nums">
             {formatUsdc(totalVolume)}
-            <span className="ml-1.5 text-sm font-medium text-muted">USDC</span>
+            <span className="ms-1.5 text-sm font-medium text-muted">USDC</span>
           </p>
+        </div>
+      </section>
+
+      {/* ---------- Barre de découverte : recherche, catégories, tri ---------- */}
+      <section className="mb-6 space-y-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          {/* Recherche */}
+          <div className="relative w-full sm:max-w-xs">
+            <Search className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
+            <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder={tDisc("search")}
+              className="ps-9"
+            />
+          </div>
+
+          {/* Tri */}
+          <div className="inline-flex shrink-0 rounded-lg border border-border bg-surface p-1">
+            {(["popular", "recent", "ending"] as SortMode[]).map((mode) => (
+              <button
+                key={mode}
+                onClick={() => setSortMode(mode)}
+                className={cn(
+                  "rounded-md px-3 py-1.5 text-xs font-semibold transition-colors",
+                  sortMode === mode
+                    ? "bg-surface-hover text-foreground shadow-card"
+                    : "text-muted hover:text-foreground"
+                )}
+              >
+                {tDisc(`sort_${mode}`)}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Filtres par catégorie */}
+        <div className="flex flex-wrap gap-1.5">
+          {(["all", ...MARKET_CATEGORIES] as const).map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setCategoryFilter(cat)}
+              className={cn(
+                "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
+                categoryFilter === cat
+                  ? "border-primary-light/60 bg-primary/15 text-primary-light"
+                  : "border-border text-muted hover:border-border-strong hover:text-foreground"
+              )}
+            >
+              {tCat(cat)}
+            </button>
+          ))}
         </div>
       </section>
 
@@ -170,8 +273,16 @@ export default function HomePage() {
 
         {!isLoading && !hasError && sortedMarkets.length === 0 && (
           <div className="rounded-xl border border-dashed border-border-strong py-20 text-center">
-            <p className="text-lg font-semibold">{t("emptyTitle")}</p>
-            <p className="mt-1 text-sm text-muted">{t("emptySubtitle")}</p>
+            {(markets ?? []).length === 0 ? (
+              // Aucun marché du tout sur la plateforme.
+              <>
+                <p className="text-lg font-semibold">{t("emptyTitle")}</p>
+                <p className="mt-1 text-sm text-muted">{t("emptySubtitle")}</p>
+              </>
+            ) : (
+              // Des marchés existent mais les filtres/recherche n'en gardent aucun.
+              <p className="text-sm text-muted">{tDisc("noResults")}</p>
+            )}
           </div>
         )}
 

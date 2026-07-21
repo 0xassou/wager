@@ -5,7 +5,8 @@
   },
   "nav": {
     "markets": "Marchés",
-    "myMarkets": "Mes marchés"
+    "myMarkets": "Mes marchés",
+    "profile": "Profil"
   },
   "theme": {
     "toLight": "Passer en mode clair",
@@ -19,14 +20,13 @@
   },
   "home": {
     "eyebrow": "Prediction Market · Arc Testnet",
-    "title1": "Ton avis compte.",
-    "title2": "En USDC, sur-le-champ.",
-    "subtitle": "Crée un marché, prends position, empoche tes gains — le tout on-chain, réglé en USDC.",
+    "subtitle": "Prends position, empoche tes gains — réglé en USDC, onchain.",
     "cta": "Ouvrir une position",
     "statMarkets": "Marchés",
     "statVolume": "Volume total",
     "emptyTitle": "Aucun marché pour le moment",
-    "emptySubtitle": "Sois le premier à en créer un !"
+    "emptySubtitle": "Sois le premier à en créer un !",
+    "title": "Chaque mise raconte l'avenir."
   },
   "dataError": {
     "title": "Impossible de charger les marchés",
@@ -37,7 +37,10 @@
     "open": "Ouvert",
     "pending": "En attente de résolution",
     "resolvedYes": "Résolu · Oui",
-    "resolvedNo": "Résolu · Non"
+    "resolvedNo": "Résolu · Non",
+    "proposed": "Proposé",
+    "disputed": "Contesté",
+    "refunded": "Remboursé"
   },
   "common": {
     "yes": "Oui",
@@ -91,7 +94,8 @@
     "warning": "⚠️ Cette action est définitive. Les gagnants pourront réclamer leurs gains immédiatement après.",
     "choose": "Choisis un résultat",
     "confirm": "Confirmer : {side}",
-    "confirming": "Confirmation..."
+    "confirming": "Confirmation...",
+    "warningAdmin": "⚠️ Le créateur n'a pas proposé de résolution. En tant que owner du contrat, tu peux en proposer une à sa place — ça ouvre quand même une fenêtre de contestation avant d'être définitif."
   },
   "create": {
     "title": "Créer un marché",
@@ -101,7 +105,8 @@
     "endHelp": "Après cette date, plus personne ne peut parier et tu pourras résoudre le marché.",
     "cta": "Créer le marché",
     "confirming": "Confirmation...",
-    "connect": "Connecte ton wallet"
+    "connect": "Connecte ton wallet",
+    "category": "Catégorie"
   },
   "activity": {
     "title": "Historique des paris",
@@ -123,5 +128,82 @@
     "emptyCreated": "Tu n'as pas encore créé de marché",
     "emptyBets": "Tu n'as pas encore parié",
     "emptyHint": "Rends-toi sur la page d'accueil pour commencer."
+  },
+  "categories": {
+    "all": "Tous",
+    "crypto": "Crypto",
+    "sport": "Sport",
+    "politics": "Politique",
+    "tech": "Tech",
+    "other": "Autre"
+  },
+  "discover": {
+    "search": "Rechercher un marché...",
+    "sort_popular": "Populaire",
+    "sort_recent": "Récent",
+    "sort_ending": "Clôture bientôt",
+    "noResults": "Aucun marché ne correspond à tes filtres."
+  },
+  "fees": {
+    "badge": "Seulement {rate} % de frais sur les gains — moins cher que les grandes plateformes",
+    "note": "Des frais de {rate} % s'appliquent uniquement sur les gains, au moment du claim."
+  },
+  "profile": {
+    "connectTitle": "Connecte ton wallet",
+    "connectBody": "Connecte ton wallet pour voir ton profil, tes stats et ton historique de paris.",
+    "copyHint": "Clique sur l'adresse pour la copier",
+    "copied": "Adresse copiée !",
+    "badge_rookie": "Débutant",
+    "badge_active": "Actif",
+    "badge_expert": "Expert",
+    "statBets": "Paris",
+    "statWinRate": "Taux de réussite",
+    "statNet": "Gain net",
+    "statCreated": "Marchés créés",
+    "historyTitle": "Historique des paris",
+    "createdTitle": "Marchés créés",
+    "betsEmpty": "Aucun pari pour le moment — rends-toi sur les marchés pour commencer.",
+    "createdEmpty": "Aucun marché créé pour le moment.",
+    "result_won": "Gagné",
+    "result_lost": "Perdu",
+    "result_pending": "En attente",
+    "result_refunded": "Remboursé"
+  },
+  "follow": {
+    "follow": "Suivre ce marché",
+    "following": "Suivi"
+  },
+  "notifications": {
+    "closingTitle": "Marché bientôt clôturé",
+    "closingBody": "Les paris ferment dans moins d'1 heure : {question}",
+    "resolvedTitle": "Marché résolu",
+    "resolvedBody": "Un marché que tu suis vient d'être résolu : {question}",
+    "disputedTitle": "Marché contesté",
+    "disputedBody": "Un marché que tu suis a été contesté et attend un arbitrage : {question}"
+  },
+  "resolution": {
+    "actionRequiredCreator": "Action requise :",
+    "actionBodyCreator": "ce marché est terminé. Propose une résolution — elle passera par une fenêtre de contestation avant de devenir définitive.",
+    "proposeCta": "Proposer une résolution",
+    "actionRequiredAdmin": "Filet de sécurité admin :",
+    "actionBodyAdmin": "le créateur n'a pas proposé de résolution. En tant que owner du contrat, tu peux en proposer une à sa place.",
+    "proposeAdminCta": "Proposer une résolution (en tant qu'admin)",
+    "waitingCreator": "En attente d'une proposition de résolution par le créateur.",
+    "proposedTitle": "Résolution proposée",
+    "proposedBody": "Le créateur a proposé \"{outcome}\" comme résultat. N'importe qui peut la contester pendant la fenêtre ci-dessous.",
+    "disputeUntil": "Contestable pendant {time} · jusqu'au {date}",
+    "windowClosed": "La fenêtre de contestation est terminée.",
+    "approveBond": "1/2 · Approuver le dépôt de {amount} USDC",
+    "disputeCta": "Contester · verrouiller {amount} USDC",
+    "bondHint": "Ton dépôt t'est remboursé si la contestation est confirmée, ou perdu au profit de la trésorerie sinon.",
+    "finalizeCta": "Finaliser la résolution",
+    "disputedTitle": "Contesté — en attente d'arbitrage",
+    "disputedBody": "{disputer} a contesté le résultat proposé (\"{outcome}\") en verrouillant {amount} USDC. Le owner du contrat va trancher.",
+    "arbitrateCta": "Arbitrer cette contestation",
+    "confirmOutcome": "Confirmer : {outcome}",
+    "overturnOutcome": "Renverser : {outcome}",
+    "waitingArbitration": "En attente de l'arbitrage du owner du contrat sur cette contestation.",
+    "waitingTimeoutReached": "Le owner n'a jamais tranché cette contestation. N'importe qui peut déclencher un remboursement neutre ci-dessous.",
+    "forceRefundCta": "Déclencher le remboursement neutre (délai dépassé)"
   }
 }

@@ -5,7 +5,8 @@
   },
   "nav": {
     "markets": "Mercados",
-    "myMarkets": "Meus mercados"
+    "myMarkets": "Meus mercados",
+    "profile": "Perfil"
   },
   "theme": {
     "toLight": "Mudar para modo claro",
@@ -19,14 +20,13 @@
   },
   "home": {
     "eyebrow": "Mercado de previsão · Arc Testnet",
-    "title1": "Sua opinião conta.",
-    "title2": "Em USDC, na hora.",
-    "subtitle": "Crie um mercado, assuma uma posição, embolse seus ganhos — tudo on-chain, liquidado em USDC.",
+    "subtitle": "Tome posição, resgate seus ganhos — liquidado em USDC, onchain.",
     "cta": "Abrir uma posição",
     "statMarkets": "Mercados",
     "statVolume": "Volume total",
     "emptyTitle": "Ainda não há mercados",
-    "emptySubtitle": "Seja o primeiro a criar um!"
+    "emptySubtitle": "Seja o primeiro a criar um!",
+    "title": "Cada aposta conta o futuro."
   },
   "dataError": {
     "title": "Não foi possível carregar os mercados",
@@ -37,7 +37,10 @@
     "open": "Aberto",
     "pending": "Aguardando resolução",
     "resolvedYes": "Resolvido · Sim",
-    "resolvedNo": "Resolvido · Não"
+    "resolvedNo": "Resolvido · Não",
+    "proposed": "Proposto",
+    "disputed": "Contestado",
+    "refunded": "Reembolsado"
   },
   "common": {
     "yes": "Sim",
@@ -91,7 +94,8 @@
     "warning": "⚠️ Esta ação é definitiva. Os vencedores poderão resgatar seus prêmios imediatamente depois.",
     "choose": "Escolha um resultado",
     "confirm": "Confirmar: {side}",
-    "confirming": "Confirmando..."
+    "confirming": "Confirmando...",
+    "warningAdmin": "⚠️ O criador não propôs uma resolução. Como proprietário do contrato, você pode propor uma em seu lugar — isso ainda abre uma janela de contestação antes de ser definitivo."
   },
   "create": {
     "title": "Criar um mercado",
@@ -101,7 +105,8 @@
     "endHelp": "Após essa data, ninguém mais poderá apostar e você poderá resolver o mercado.",
     "cta": "Criar mercado",
     "confirming": "Confirmando...",
-    "connect": "Conecte sua carteira"
+    "connect": "Conecte sua carteira",
+    "category": "Categoria"
   },
   "activity": {
     "title": "Histórico de apostas",
@@ -123,5 +128,82 @@
     "emptyCreated": "Você ainda não criou nenhum mercado",
     "emptyBets": "Você ainda não fez nenhuma aposta",
     "emptyHint": "Vá para a página inicial para começar."
+  },
+  "categories": {
+    "all": "Todos",
+    "crypto": "Cripto",
+    "sport": "Esportes",
+    "politics": "Política",
+    "tech": "Tecnologia",
+    "other": "Outros"
+  },
+  "discover": {
+    "search": "Buscar mercados...",
+    "sort_popular": "Popular",
+    "sort_recent": "Recente",
+    "sort_ending": "Encerra em breve",
+    "noResults": "Nenhum mercado corresponde aos seus filtros."
+  },
+  "fees": {
+    "badge": "Apenas {rate}% de taxa sobre os ganhos — mais barato que as grandes plataformas",
+    "note": "Uma taxa de {rate}% é aplicada apenas sobre os ganhos, no momento do resgate."
+  },
+  "profile": {
+    "connectTitle": "Conecte sua wallet",
+    "connectBody": "Conecte sua wallet para ver seu perfil, estatísticas e histórico de apostas.",
+    "copyHint": "Clique no endereço para copiá-lo",
+    "copied": "Endereço copiado!",
+    "badge_rookie": "Iniciante",
+    "badge_active": "Ativo",
+    "badge_expert": "Especialista",
+    "statBets": "Apostas",
+    "statWinRate": "Taxa de acerto",
+    "statNet": "Lucro líquido",
+    "statCreated": "Mercados criados",
+    "historyTitle": "Histórico de apostas",
+    "createdTitle": "Mercados criados",
+    "betsEmpty": "Nenhuma aposta ainda — vá aos mercados para começar.",
+    "createdEmpty": "Nenhum mercado criado ainda.",
+    "result_won": "Ganhou",
+    "result_lost": "Perdeu",
+    "result_pending": "Pendente",
+    "result_refunded": "Reembolsada"
+  },
+  "follow": {
+    "follow": "Seguir este mercado",
+    "following": "Seguindo"
+  },
+  "notifications": {
+    "closingTitle": "Mercado encerra em breve",
+    "closingBody": "As apostas encerram em menos de 1 hora: {question}",
+    "resolvedTitle": "Mercado resolvido",
+    "resolvedBody": "Um mercado que você segue foi resolvido: {question}",
+    "disputedTitle": "Mercado contestado",
+    "disputedBody": "Um mercado que você segue foi contestado e aguarda arbitragem: {question}"
+  },
+  "resolution": {
+    "actionRequiredCreator": "Ação necessária:",
+    "actionBodyCreator": "este mercado terminou. Proponha uma resolução — ela passará por uma janela de contestação antes de se tornar definitiva.",
+    "proposeCta": "Propor resolução",
+    "actionRequiredAdmin": "Reserva do administrador:",
+    "actionBodyAdmin": "o criador não propôs uma resolução. Como proprietário do contrato, você pode propor uma em seu lugar.",
+    "proposeAdminCta": "Propor resolução (como admin)",
+    "waitingCreator": "Aguardando o criador propor uma resolução.",
+    "proposedTitle": "Resolução proposta",
+    "proposedBody": "O criador propôs \"{outcome}\" como resultado. Qualquer pessoa pode contestar durante a janela abaixo.",
+    "disputeUntil": "Contestável por {time} · até {date}",
+    "windowClosed": "A janela de contestação terminou.",
+    "approveBond": "1/2 · Aprovar depósito de {amount} USDC",
+    "disputeCta": "Contestar · bloquear {amount} USDC",
+    "bondHint": "Seu depósito é reembolsado se a contestação for aceita, ou perdido para a tesouraria caso contrário.",
+    "finalizeCta": "Finalizar resolução",
+    "disputedTitle": "Contestado — aguardando arbitragem",
+    "disputedBody": "{disputer} contestou o resultado proposto (\"{outcome}\") bloqueando {amount} USDC. O proprietário do contrato tomará a decisão final.",
+    "arbitrateCta": "Arbitrar esta contestação",
+    "confirmOutcome": "Confirmar: {outcome}",
+    "overturnOutcome": "Reverter: {outcome}",
+    "waitingArbitration": "Aguardando o proprietário do contrato arbitrar esta contestação.",
+    "waitingTimeoutReached": "O proprietário nunca decidiu esta contestação. Qualquer pessoa pode acionar um reembolso neutro abaixo.",
+    "forceRefundCta": "Acionar reembolso neutro (tempo esgotado)"
   }
 }

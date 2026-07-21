@@ -12,7 +12,8 @@ import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { OddsBar } from "@/components/odds-bar";
-import { OUTCOME, type MarketData } from "@/lib/contract";
+import { OUTCOME, PHASE, type MarketData } from "@/lib/contract";
+import { parseQuestion } from "@/lib/categories";
 import { formatUsdc, isOpen, timeLeft, yesPercent } from "@/lib/utils";
 
 interface MarketCardProps {
@@ -20,25 +21,35 @@ interface MarketCardProps {
   marketId: number;
 }
 
-/** Badge de statut selon l'état du marché (libellés traduits). */
+/** Badge de statut selon la phase de résolution du marché (libellés traduits). */
 export function StatusBadge({ market }: { market: MarketData }) {
   const t = useTranslations("status");
 
-  if (market.resolved) {
-    return market.outcome === OUTCOME.YES ? (
-      <Badge variant="yes">{t("resolvedYes")}</Badge>
-    ) : (
-      <Badge variant="no">{t("resolvedNo")}</Badge>
-    );
+  switch (market.phase) {
+    case PHASE.FINALIZED:
+      if (market.forceRefunded) return <Badge variant="refunded">{t("refunded")}</Badge>;
+      return market.outcome === OUTCOME.YES ? (
+        <Badge variant="yes">{t("resolvedYes")}</Badge>
+      ) : (
+        <Badge variant="no">{t("resolvedNo")}</Badge>
+      );
+    case PHASE.DISPUTED:
+      return <Badge variant="disputed">{t("disputed")}</Badge>;
+    case PHASE.PROPOSED:
+      return <Badge variant="proposed">{t("proposed")}</Badge>;
+    default:
+      if (isOpen(market)) return <Badge variant="open">{t("open")}</Badge>;
+      return <Badge variant="pending">{t("pending")}</Badge>;
   }
-  if (isOpen(market)) return <Badge variant="open">{t("open")}</Badge>;
-  return <Badge variant="pending">{t("pending")}</Badge>;
 }
 
 export function MarketCard({ market, marketId }: MarketCardProps) {
   const t = useTranslations();
   const volume = market.yesPool + market.noPool;
   const pct = yesPercent(market);
+  // La question on-chain peut contenir un préfixe de catégorie ([crypto]...) :
+  // on affiche le texte nettoyé + un badge de catégorie.
+  const { category, text: questionText } = parseQuestion(market.question);
 
   const timeLabels = {
     ended: t("time.ended"),
@@ -51,10 +62,17 @@ export function MarketCard({ market, marketId }: MarketCardProps) {
   return (
     <Link href={`/market/${marketId}`} className="block">
       <Card hover className="flex h-full flex-col gap-4 p-5">
-        {/* En-tête : statut + temps restant */}
-        <div className="flex items-center justify-between">
-          <StatusBadge market={market} />
-          {!market.resolved && (
+        {/* En-tête : statut + catégorie + temps restant */}
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <StatusBadge market={market} />
+            {category !== "other" && (
+              <span className="rounded-full border border-primary-light/30 bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-light">
+                {t(`categories.${category}`)}
+              </span>
+            )}
+          </div>
+          {market.phase === PHASE.OPEN && (
             <span className="flex items-center gap-1 text-xs text-muted">
               <Clock className="h-3.5 w-3.5" />
               {timeLeft(market.endTime, timeLabels)}
@@ -65,7 +83,7 @@ export function MarketCard({ market, marketId }: MarketCardProps) {
         {/* Question + probabilité "Oui" en gros chiffre (style Polymarket) */}
         <div className="flex flex-1 items-start justify-between gap-3">
           <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug">
-            {market.question}
+            {questionText}
           </h3>
           <div className="shrink-0 text-end">
             <p className="text-2xl font-bold tabular-nums leading-none text-yes">

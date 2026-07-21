@@ -19,3 +19,4 @@ web/tsconfig.tsbuildinfo
 # Divers
 .DS_Store
 *.log
+.vercel

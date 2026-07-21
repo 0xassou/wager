@@ -17,7 +17,7 @@ import { useTranslations } from "next-intl";
 import { Trophy } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MARKET_ADDRESS, marketAbi, type MarketData } from "@/lib/contract";
+import { MARKET_ADDRESS, PHASE, marketAbi, type MarketData } from "@/lib/contract";
 import { formatUsdc } from "@/lib/utils";
 
 export function ClaimPanel({
@@ -37,7 +37,7 @@ export function ClaimPanel({
     abi: marketAbi,
     functionName: "claimableAmount",
     args: [BigInt(marketId), address ?? "0x0000000000000000000000000000000000000000"],
-    query: { enabled: !!address && market.resolved },
+    query: { enabled: !!address && market.phase === PHASE.FINALIZED },
   });
 
   // Position de l'utilisateur (pour savoir s'il a déjà réclamé).
@@ -61,7 +61,7 @@ export function ClaimPanel({
     }
   }, [isSuccess, queryClient, reset]);
 
-  if (!address || !market.resolved) return null;
+  if (!address || market.phase !== PHASE.FINALIZED) return null;
 
   const hasBet =
     position && (position.yesAmount > 0n || position.noAmount > 0n);

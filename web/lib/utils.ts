@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { formatUnits } from "viem";
-import { USDC_DECIMALS, type MarketData } from "./contract";
+import { PHASE, USDC_DECIMALS, type MarketData } from "./contract";
 
 /** Fusionne des classes Tailwind sans conflits (pattern shadcn/ui). */
 export function cn(...inputs: ClassValue[]) {
@@ -84,6 +84,6 @@ export function shortAddress(address: string): string {
 }
 
 /** true si le marché est encore ouvert aux paris. */
-export function isOpen(market: Pick<MarketData, "endTime" | "resolved">): boolean {
-  return !market.resolved && Number(market.endTime) * 1000 > Date.now();
+export function isOpen(market: Pick<MarketData, "endTime" | "phase">): boolean {
+  return market.phase === PHASE.OPEN && Number(market.endTime) * 1000 > Date.now();
 }

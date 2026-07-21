@@ -5,8 +5,9 @@
  *
  * Colonne principale : question, statut, compte à rebours, cotes,
  * pools Oui/Non, historique des paris.
- * Colonne latérale : panneau de pari (si ouvert), claim (si résolu),
- * bouton "Résoudre" (créateur uniquement, après la fin), ma position.
+ * Colonne latérale : panneau de pari (si ouvert), résolution en plusieurs
+ * temps (proposer → contester → finaliser/arbitrer, voir ResolutionPanel),
+ * claim (si finalisé), ma position.
  */
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -21,9 +22,12 @@ import { OddsBar } from "@/components/odds-bar";
 import { StatusBadge } from "@/components/market-card";
 import { BetPanel } from "@/components/bet-panel";
 import { ClaimPanel } from "@/components/claim-panel";
-import { ResolveModal } from "@/components/resolve-modal";
+import { ResolutionPanel } from "@/components/resolution-panel";
+import { ProposeResolutionModal } from "@/components/propose-resolution-modal";
 import { ActivityFeed } from "@/components/activity-feed";
-import { MARKET_ADDRESS, marketAbi, isConfigured } from "@/lib/contract";
+import { FollowButton } from "@/components/follow-button";
+import { MARKET_ADDRESS, PHASE, marketAbi, isConfigured } from "@/lib/contract";
+import { parseQuestion } from "@/lib/categories";
 import {
   formatDate,
   formatUsdc,
@@ -38,7 +42,9 @@ export default function MarketDetailPage() {
   const marketId = Number(params.id);
   const { address } = useAccount();
   const t = useTranslations("detail");
+  const tRes = useTranslations("resolution");
   const tTime = useTranslations("time");
+  const tCat = useTranslations("categories");
   const locale = useLocale();
 
   // Tick chaque seconde pour rafraîchir le compte à rebours à l'écran.
@@ -48,7 +54,8 @@ export default function MarketDetailPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const [resolveOpen, setResolveOpen] = useState(false);
+  const [proposeOpen, setProposeOpen] = useState(false);
+  const [proposeAsAdmin, setProposeAsAdmin] = useState(false);
 
   // Données du marché.
   const { data: market, isLoading } = useReadContract({
@@ -68,6 +75,20 @@ export default function MarketDetailPage() {
     query: { enabled: !!address && isConfigured },
   });
 
+  // Owner du contrat + délai de grâce (pour le fallback créateur inactif).
+  const { data: contractOwner } = useReadContract({
+    address: MARKET_ADDRESS,
+    abi: marketAbi,
+    functionName: "owner",
+    query: { enabled: isConfigured },
+  });
+  const { data: proposalGracePeriod } = useReadContract({
+    address: MARKET_ADDRESS,
+    abi: marketAbi,
+    functionName: "proposalGracePeriod",
+    query: { enabled: isConfigured },
+  });
+
   if (isLoading || !market) {
     return (
       <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
@@ -80,8 +101,24 @@ export default function MarketDetailPage() {
   const open = isOpen(market);
   const ended = Number(market.endTime) * 1000 <= Date.now();
   const isCreator = address?.toLowerCase() === market.creator.toLowerCase();
+  const isOwner =
+    !!address && !!contractOwner && address.toLowerCase() === contractOwner.toLowerCase();
   const volume = market.yesPool + market.noPool;
   const pct = yesPercent(market);
+  // Question nettoyée de son éventuel préfixe de catégorie on-chain.
+  const { category, text: questionText } = parseQuestion(market.question);
+
+  // Le créateur peut proposer dès la fin ; le owner peut proposer à sa
+  // place seulement après le délai de grâce (créateur présumé inactif).
+  const graceElapsed =
+    ended &&
+    proposalGracePeriod !== undefined &&
+    Number(market.endTime) * 1000 + Number(proposalGracePeriod) * 1000 <= Date.now();
+
+  const openProposeModal = (asAdmin: boolean) => {
+    setProposeAsAdmin(asAdmin);
+    setProposeOpen(true);
+  };
 
   return (
     <div className="animate-fade-in">
@@ -90,7 +127,7 @@ export default function MarketDetailPage() {
         href="/"
         className="mb-5 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
         {t("back")}
       </Link>
 
@@ -101,6 +138,11 @@ export default function MarketDetailPage() {
             {/* Statut + méta */}
             <div className="mb-4 flex flex-wrap items-center gap-3">
               <StatusBadge market={market} />
+              {category !== "other" && (
+                <span className="rounded-full border border-primary-light/30 bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-light">
+                  {tCat(category)}
+                </span>
+              )}
 
               <span className="flex items-center gap-1.5 text-xs text-muted">
                 <User className="h-3.5 w-3.5" />
@@ -109,11 +151,16 @@ export default function MarketDetailPage() {
                   {isCreator ? t("you") : shortAddress(market.creator)}
                 </span>
               </span>
+
+              {/* Suivre ce marché (notifications navigateur) */}
+              <span className="ms-auto">
+                <FollowButton marketId={marketId} />
+              </span>
             </div>
 
             {/* Question */}
             <h1 className="text-xl font-bold leading-snug sm:text-2xl">
-              {market.question}
+              {questionText}
             </h1>
 
             {/* Compte à rebours / date de fin */}
@@ -172,26 +219,45 @@ export default function MarketDetailPage() {
 
         {/* ================= Colonne latérale ================= */}
         <div className="space-y-4">
-          {/* Bouton Résoudre — créateur uniquement, marché terminé non résolu */}
-          {isCreator && ended && !market.resolved && (
+          {/* Le créateur peut proposer une résolution dès la fin des paris */}
+          {isCreator && ended && market.phase === PHASE.OPEN && (
             <Card className="border-amber-500/30 bg-amber-500/5 p-5">
               <p className="mb-3 text-sm">
                 <span className="font-semibold text-amber-700 dark:text-amber-400">
-                  {t("actionRequired")}
+                  {tRes("actionRequiredCreator")}
                 </span>{" "}
-                {t("actionBody")}
+                {tRes("actionBodyCreator")}
               </p>
-              <Button className="w-full" onClick={() => setResolveOpen(true)}>
+              <Button className="w-full" onClick={() => openProposeModal(false)}>
                 <Gavel className="h-4 w-4" />
-                {t("resolveCta")}
+                {tRes("proposeCta")}
               </Button>
             </Card>
           )}
 
+          {/* Filet de sécurité : le owner peut proposer si le créateur reste inactif */}
+          {!isCreator && isOwner && graceElapsed && market.phase === PHASE.OPEN && (
+            <Card className="border-amber-500/30 bg-amber-500/5 p-5">
+              <p className="mb-3 text-sm">
+                <span className="font-semibold text-amber-700 dark:text-amber-400">
+                  {tRes("actionRequiredAdmin")}
+                </span>{" "}
+                {tRes("actionBodyAdmin")}
+              </p>
+              <Button className="w-full" onClick={() => openProposeModal(true)}>
+                <Gavel className="h-4 w-4" />
+                {tRes("proposeAdminCta")}
+              </Button>
+            </Card>
+          )}
+
+          {/* Résolution en cours (Proposed / Disputed) */}
+          <ResolutionPanel marketId={marketId} market={market} />
+
           {/* Panneau de pari (si ouvert) */}
           {open && <BetPanel marketId={marketId} market={market} />}
 
-          {/* Claim (si résolu) */}
+          {/* Claim (si finalisé) */}
           <ClaimPanel marketId={marketId} market={market} />
 
           {/* Ma position */}
@@ -221,20 +287,24 @@ export default function MarketDetailPage() {
             </Card>
           )}
 
-          {/* Marché terminé mais pas résolu, et je ne suis pas le créateur */}
-          {!open && !market.resolved && !isCreator && (
-            <Card className="p-5 text-center text-sm text-muted">
-              {t("waiting")}
-            </Card>
-          )}
+          {/* Marché terminé, personne n'a encore pu proposer de résolution */}
+          {!open &&
+            market.phase === PHASE.OPEN &&
+            !isCreator &&
+            !(isOwner && graceElapsed) && (
+              <Card className="p-5 text-center text-sm text-muted">
+                {tRes("waitingCreator")}
+              </Card>
+            )}
         </div>
       </div>
 
-      <ResolveModal
-        open={resolveOpen}
-        onClose={() => setResolveOpen(false)}
+      <ProposeResolutionModal
+        open={proposeOpen}
+        onClose={() => setProposeOpen(false)}
         marketId={marketId}
-        question={market.question}
+        question={questionText}
+        asAdmin={proposeAsAdmin}
       />
     </div>
   );

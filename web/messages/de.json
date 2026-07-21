@@ -5,7 +5,8 @@
   },
   "nav": {
     "markets": "Märkte",
-    "myMarkets": "Meine Märkte"
+    "myMarkets": "Meine Märkte",
+    "profile": "Profil"
   },
   "theme": {
     "toLight": "Zum hellen Modus wechseln",
@@ -19,14 +20,13 @@
   },
   "home": {
     "eyebrow": "Prognosemarkt · Arc Testnet",
-    "title1": "Deine Meinung zählt.",
-    "title2": "In USDC, sofort.",
-    "subtitle": "Erstelle einen Markt, beziehe Position, streiche deine Gewinne ein — alles on-chain, abgerechnet in USDC.",
+    "subtitle": "Beziehe Position, sichere dir deinen Gewinn — abgerechnet in USDC, onchain.",
     "cta": "Position eröffnen",
     "statMarkets": "Märkte",
     "statVolume": "Gesamtvolumen",
     "emptyTitle": "Noch keine Märkte",
-    "emptySubtitle": "Sei der Erste, der einen erstellt!"
+    "emptySubtitle": "Sei der Erste, der einen erstellt!",
+    "title": "Jede Wette erzählt die Zukunft."
   },
   "dataError": {
     "title": "Märkte konnten nicht geladen werden",
@@ -37,7 +37,10 @@
     "open": "Offen",
     "pending": "Auflösung ausstehend",
     "resolvedYes": "Aufgelöst · Ja",
-    "resolvedNo": "Aufgelöst · Nein"
+    "resolvedNo": "Aufgelöst · Nein",
+    "proposed": "Vorgeschlagen",
+    "disputed": "Angefochten",
+    "refunded": "Erstattet"
   },
   "common": {
     "yes": "Ja",
@@ -91,7 +94,8 @@
     "warning": "⚠️ Diese Aktion ist endgültig. Gewinner können ihre Auszahlung danach sofort einfordern.",
     "choose": "Ergebnis wählen",
     "confirm": "Bestätigen: {side}",
-    "confirming": "Wird bestätigt..."
+    "confirming": "Wird bestätigt...",
+    "warningAdmin": "⚠️ Der Ersteller hat keine Auflösung vorgeschlagen. Als Vertragsinhaber kannst du stellvertretend eine vorschlagen — auch dabei öffnet sich ein Einspruchsfenster, bevor es endgültig wird."
   },
   "create": {
     "title": "Markt erstellen",
@@ -101,7 +105,8 @@
     "endHelp": "Nach diesem Datum kann niemand mehr wetten und du kannst den Markt auflösen.",
     "cta": "Markt erstellen",
     "confirming": "Wird bestätigt...",
-    "connect": "Wallet verbinden"
+    "connect": "Wallet verbinden",
+    "category": "Kategorie"
   },
   "activity": {
     "title": "Wettverlauf",
@@ -123,5 +128,82 @@
     "emptyCreated": "Du hast noch keinen Markt erstellt",
     "emptyBets": "Du hast noch nicht gewettet",
     "emptyHint": "Gehe zur Startseite, um loszulegen."
+  },
+  "categories": {
+    "all": "Alle",
+    "crypto": "Krypto",
+    "sport": "Sport",
+    "politics": "Politik",
+    "tech": "Tech",
+    "other": "Sonstiges"
+  },
+  "discover": {
+    "search": "Märkte durchsuchen...",
+    "sort_popular": "Beliebt",
+    "sort_recent": "Neueste",
+    "sort_ending": "Endet bald",
+    "noResults": "Keine Märkte entsprechen deinen Filtern."
+  },
+  "fees": {
+    "badge": "Nur {rate} % Gebühr auf Gewinne — günstiger als die großen Plattformen",
+    "note": "Eine Gebühr von {rate} % fällt nur auf Gewinne an, beim Auszahlen."
+  },
+  "profile": {
+    "connectTitle": "Wallet verbinden",
+    "connectBody": "Verbinde dein Wallet, um dein Profil, deine Statistiken und deinen Wettverlauf zu sehen.",
+    "copyHint": "Klicke auf die Adresse, um sie zu kopieren",
+    "copied": "Adresse kopiert!",
+    "badge_rookie": "Anfänger",
+    "badge_active": "Aktiv",
+    "badge_expert": "Experte",
+    "statBets": "Wetten",
+    "statWinRate": "Erfolgsquote",
+    "statNet": "Nettogewinn",
+    "statCreated": "Erstellte Märkte",
+    "historyTitle": "Wettverlauf",
+    "createdTitle": "Erstellte Märkte",
+    "betsEmpty": "Noch keine Wetten — starte auf der Marktseite.",
+    "createdEmpty": "Noch keine Märkte erstellt.",
+    "result_won": "Gewonnen",
+    "result_lost": "Verloren",
+    "result_pending": "Ausstehend",
+    "result_refunded": "Erstattet"
+  },
+  "follow": {
+    "follow": "Diesem Markt folgen",
+    "following": "Gefolgt"
+  },
+  "notifications": {
+    "closingTitle": "Markt schließt bald",
+    "closingBody": "Wetten enden in weniger als 1 Stunde: {question}",
+    "resolvedTitle": "Markt aufgelöst",
+    "resolvedBody": "Ein Markt, dem du folgst, wurde aufgelöst: {question}",
+    "disputedTitle": "Markt angefochten",
+    "disputedBody": "Ein Markt, dem du folgst, wurde angefochten und wartet auf einen Schiedsspruch: {question}"
+  },
+  "resolution": {
+    "actionRequiredCreator": "Aktion erforderlich:",
+    "actionBodyCreator": "dieser Markt ist beendet. Schlage eine Auflösung vor — sie durchläuft ein Einspruchsfenster, bevor sie endgültig wird.",
+    "proposeCta": "Auflösung vorschlagen",
+    "actionRequiredAdmin": "Admin-Rückfalloption:",
+    "actionBodyAdmin": "der Ersteller hat keine Auflösung vorgeschlagen. Als Vertragsinhaber kannst du stellvertretend eine vorschlagen.",
+    "proposeAdminCta": "Auflösung vorschlagen (als Admin)",
+    "waitingCreator": "Warten auf einen Auflösungsvorschlag des Erstellers.",
+    "proposedTitle": "Auflösung vorgeschlagen",
+    "proposedBody": "Der Ersteller hat \"{outcome}\" als Ergebnis vorgeschlagen. Jeder kann während des unten stehenden Fensters Einspruch erheben.",
+    "disputeUntil": "Anfechtbar für {time} · bis {date}",
+    "windowClosed": "Das Einspruchsfenster ist geschlossen.",
+    "approveBond": "1/2 · Kaution von {amount} USDC genehmigen",
+    "disputeCta": "Anfechten · {amount} USDC hinterlegen",
+    "bondHint": "Deine Kaution wird zurückerstattet, wenn dem Einspruch stattgegeben wird, sonst geht sie an die Kasse.",
+    "finalizeCta": "Auflösung abschließen",
+    "disputedTitle": "Angefochten — wartet auf Schiedsspruch",
+    "disputedBody": "{disputer} hat das vorgeschlagene Ergebnis (\"{outcome}\") angefochten und {amount} USDC hinterlegt. Der Vertragsinhaber trifft die endgültige Entscheidung.",
+    "arbitrateCta": "Diesen Einspruch entscheiden",
+    "confirmOutcome": "Bestätigen: {outcome}",
+    "overturnOutcome": "Aufheben: {outcome}",
+    "waitingArbitration": "Warten auf den Schiedsspruch des Vertragsinhabers zu diesem Einspruch.",
+    "waitingTimeoutReached": "Der Inhaber hat diesen Einspruch nie entschieden. Jeder kann unten eine neutrale Rückerstattung auslösen.",
+    "forceRefundCta": "Neutrale Rückerstattung auslösen (Frist abgelaufen)"
   }
 }

@@ -6,22 +6,34 @@
  *  - liens (Marchés, Mes marchés) — traduits
  *  - sélecteur de langue, toggle de thème, bouton wallet RainbowKit
  */
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { TrendingUp } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
   const t = useTranslations("nav");
+  const { isConnected } = useAccount();
+
+  // L'état de connexion n'est connu qu'après l'hydratation : on n'affiche
+  // le lien Profil qu'une fois monté, pour éviter un mismatch SSR/client.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const links = [
     { href: "/", label: t("markets") },
     { href: "/my-markets", label: t("myMarkets") },
+    // Le profil n'a de sens que wallet connecté.
+    ...(mounted && isConnected
+      ? [{ href: "/profile", label: t("profile") }]
+      : []),
   ];
 
   return (
@@ -29,9 +41,7 @@ export function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary border border-primary-hover shadow-[0_2px_8px_-2px_rgba(102,58,115,0.6)]">
-            <TrendingUp className="h-5 w-5 text-white" />
-          </span>
+          <Logo size={36} className="shadow-card shrink-0" />
           <span className="text-lg font-bold tracking-tight">
             Wa<span className="text-primary-light">ger</span>
           </span>

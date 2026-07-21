@@ -5,7 +5,8 @@
   },
   "nav": {
     "markets": "Mercados",
-    "myMarkets": "Mis mercados"
+    "myMarkets": "Mis mercados",
+    "profile": "Perfil"
   },
   "theme": {
     "toLight": "Cambiar a modo claro",
@@ -19,14 +20,13 @@
   },
   "home": {
     "eyebrow": "Mercado de predicción · Arc Testnet",
-    "title1": "Tu opinión cuenta.",
-    "title2": "En USDC, al instante.",
-    "subtitle": "Crea un mercado, toma una posición, cobra tus ganancias — todo on-chain, liquidado en USDC.",
+    "subtitle": "Toma partido, cobra tus ganancias — liquidado en USDC, onchain.",
     "cta": "Abrir una posición",
     "statMarkets": "Mercados",
     "statVolume": "Volumen total",
     "emptyTitle": "Todavía no hay mercados",
-    "emptySubtitle": "¡Sé el primero en crear uno!"
+    "emptySubtitle": "¡Sé el primero en crear uno!",
+    "title": "Cada apuesta cuenta el futuro."
   },
   "dataError": {
     "title": "No se pudieron cargar los mercados",
@@ -37,7 +37,10 @@
     "open": "Abierto",
     "pending": "Pendiente de resolución",
     "resolvedYes": "Resuelto · Sí",
-    "resolvedNo": "Resuelto · No"
+    "resolvedNo": "Resuelto · No",
+    "proposed": "Propuesto",
+    "disputed": "Impugnado",
+    "refunded": "Reembolsado"
   },
   "common": {
     "yes": "Sí",
@@ -91,7 +94,8 @@
     "warning": "⚠️ Esta acción es definitiva. Los ganadores podrán reclamar sus premios inmediatamente después.",
     "choose": "Elige un resultado",
     "confirm": "Confirmar: {side}",
-    "confirming": "Confirmando..."
+    "confirming": "Confirmando...",
+    "warningAdmin": "⚠️ El creador no ha propuesto una resolución. Como propietario del contrato, puedes proponer una en su lugar — esto también abre una ventana de impugnación antes de ser definitivo."
   },
   "create": {
     "title": "Crear un mercado",
@@ -101,7 +105,8 @@
     "endHelp": "Después de esta fecha, nadie podrá apostar y tú podrás resolver el mercado.",
     "cta": "Crear mercado",
     "confirming": "Confirmando...",
-    "connect": "Conecta tu wallet"
+    "connect": "Conecta tu wallet",
+    "category": "Categoría"
   },
   "activity": {
     "title": "Historial de apuestas",
@@ -123,5 +128,82 @@
     "emptyCreated": "Todavía no has creado ningún mercado",
     "emptyBets": "Todavía no has hecho ninguna apuesta",
     "emptyHint": "Ve a la página de inicio para empezar."
+  },
+  "categories": {
+    "all": "Todos",
+    "crypto": "Cripto",
+    "sport": "Deportes",
+    "politics": "Política",
+    "tech": "Tecnología",
+    "other": "Otros"
+  },
+  "discover": {
+    "search": "Buscar mercados...",
+    "sort_popular": "Popular",
+    "sort_recent": "Reciente",
+    "sort_ending": "Cierra pronto",
+    "noResults": "Ningún mercado coincide con tus filtros."
+  },
+  "fees": {
+    "badge": "Solo {rate}% de comisión sobre las ganancias — más barato que las grandes plataformas",
+    "note": "Se aplica una comisión del {rate}% solo sobre las ganancias, al reclamar."
+  },
+  "profile": {
+    "connectTitle": "Conecta tu wallet",
+    "connectBody": "Conecta tu wallet para ver tu perfil, estadísticas e historial de apuestas.",
+    "copyHint": "Haz clic en la dirección para copiarla",
+    "copied": "¡Dirección copiada!",
+    "badge_rookie": "Novato",
+    "badge_active": "Activo",
+    "badge_expert": "Experto",
+    "statBets": "Apuestas",
+    "statWinRate": "Tasa de acierto",
+    "statNet": "Ganancia neta",
+    "statCreated": "Mercados creados",
+    "historyTitle": "Historial de apuestas",
+    "createdTitle": "Mercados creados",
+    "betsEmpty": "Aún no hay apuestas — ve a los mercados para empezar.",
+    "createdEmpty": "Aún no has creado mercados.",
+    "result_won": "Ganada",
+    "result_lost": "Perdida",
+    "result_pending": "Pendiente",
+    "result_refunded": "Reembolsada"
+  },
+  "follow": {
+    "follow": "Seguir este mercado",
+    "following": "Siguiendo"
+  },
+  "notifications": {
+    "closingTitle": "Mercado cierra pronto",
+    "closingBody": "Las apuestas cierran en menos de 1 hora: {question}",
+    "resolvedTitle": "Mercado resuelto",
+    "resolvedBody": "Un mercado que sigues ha sido resuelto: {question}",
+    "disputedTitle": "Mercado impugnado",
+    "disputedBody": "Un mercado que sigues ha sido impugnado y espera arbitraje: {question}"
+  },
+  "resolution": {
+    "actionRequiredCreator": "Acción requerida:",
+    "actionBodyCreator": "este mercado ha terminado. Propón una resolución — pasará por una ventana de impugnación antes de ser definitiva.",
+    "proposeCta": "Proponer resolución",
+    "actionRequiredAdmin": "Respaldo del administrador:",
+    "actionBodyAdmin": "el creador no ha propuesto una resolución. Como propietario del contrato, puedes proponer una en su lugar.",
+    "proposeAdminCta": "Proponer resolución (como admin)",
+    "waitingCreator": "Esperando a que el creador proponga una resolución.",
+    "proposedTitle": "Resolución propuesta",
+    "proposedBody": "El creador propuso \"{outcome}\" como resultado. Cualquiera puede impugnarlo durante la ventana de abajo.",
+    "disputeUntil": "Impugnable durante {time} · hasta el {date}",
+    "windowClosed": "La ventana de impugnación ha terminado.",
+    "approveBond": "1/2 · Aprobar depósito de {amount} USDC",
+    "disputeCta": "Impugnar · bloquear {amount} USDC",
+    "bondHint": "Tu depósito se reembolsa si la impugnación prospera, o se pierde a favor de la tesorería si no.",
+    "finalizeCta": "Finalizar resolución",
+    "disputedTitle": "Impugnado — pendiente de arbitraje",
+    "disputedBody": "{disputer} impugnó el resultado propuesto (\"{outcome}\") bloqueando {amount} USDC. El propietario del contrato tomará la decisión final.",
+    "arbitrateCta": "Arbitrar esta impugnación",
+    "confirmOutcome": "Confirmar: {outcome}",
+    "overturnOutcome": "Revocar: {outcome}",
+    "waitingArbitration": "Esperando a que el propietario del contrato arbitre esta impugnación.",
+    "waitingTimeoutReached": "El propietario nunca resolvió esta impugnación. Cualquiera puede activar un reembolso neutral abajo.",
+    "forceRefundCta": "Activar reembolso neutral (tiempo agotado)"
   }
 }

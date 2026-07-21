@@ -15,6 +15,12 @@ import { Dialog } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MARKET_ADDRESS, marketAbi } from "@/lib/contract";
+import {
+  MARKET_CATEGORIES,
+  encodeQuestion,
+  type MarketCategory,
+} from "@/lib/categories";
+import { cn } from "@/lib/utils";
 
 interface CreateMarketModalProps {
   open: boolean;
@@ -23,10 +29,12 @@ interface CreateMarketModalProps {
 
 export function CreateMarketModal({ open, onClose }: CreateMarketModalProps) {
   const t = useTranslations("create");
+  const tCat = useTranslations("categories");
   const { isConnected } = useAccount();
   const queryClient = useQueryClient();
 
   const [question, setQuestion] = useState("");
+  const [category, setCategory] = useState<MarketCategory>("other");
   const [endDate, setEndDate] = useState(""); // format datetime-local
 
   // Hook wagmi pour envoyer la transaction.
@@ -41,6 +49,7 @@ export function CreateMarketModal({ open, onClose }: CreateMarketModalProps) {
     if (isSuccess) {
       queryClient.invalidateQueries();
       setQuestion("");
+      setCategory("other");
       setEndDate("");
       reset();
       onClose();
@@ -56,7 +65,8 @@ export function CreateMarketModal({ open, onClose }: CreateMarketModalProps) {
       address: MARKET_ADDRESS,
       abi: marketAbi,
       functionName: "createMarket",
-      args: [question.trim(), endTime],
+      // La catégorie est encodée en préfixe on-chain ("[crypto] ...").
+      args: [encodeQuestion(category, question.trim()), endTime],
     });
   };
 
@@ -81,9 +91,33 @@ export function CreateMarketModal({ open, onClose }: CreateMarketModalProps) {
             onChange={(e) => setQuestion(e.target.value)}
             maxLength={200}
           />
-          <p className="text-right text-[11px] text-muted">
+          <p className="text-end text-[11px] text-muted">
             {question.length}/200
           </p>
+        </div>
+
+        {/* Catégorie (optionnelle — "other" par défaut) */}
+        <div className="space-y-1.5">
+          <label className="text-xs font-semibold uppercase tracking-wide text-muted">
+            {t("category")}
+          </label>
+          <div className="flex flex-wrap gap-1.5">
+            {MARKET_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setCategory(cat)}
+                className={cn(
+                  "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
+                  category === cat
+                    ? "border-primary-light/60 bg-primary/15 text-primary-light"
+                    : "border-border text-muted hover:border-border-strong hover:text-foreground"
+                )}
+              >
+                {tCat(cat)}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Date de fin */}
