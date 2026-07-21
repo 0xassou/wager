@@ -108,12 +108,20 @@ function ChartLegend({
   );
 }
 
-export function OddsChart({ marketId }: { marketId: number }) {
+export function OddsChart({
+  marketId,
+  betCount,
+}: {
+  marketId: number;
+  /** Nombre de paris on-chain — permet au fetch des logs sous-jacent de
+   * s'arrêter dès qu'il les a tous trouvés (voir lib/bet-logs.ts). */
+  betCount?: number;
+}) {
   const t = useTranslations("chart");
   const tc = useTranslations("common");
   const locale = useLocale();
   const { resolvedTheme } = useTheme();
-  const { data, isLoading } = useOddsHistory(marketId);
+  const { data, isLoading } = useOddsHistory(marketId, betCount);
 
   // Le thème n'est connu qu'après l'hydratation (évite un mismatch SSR).
   const [mounted, setMounted] = useState(false);
