@@ -205,5 +205,9 @@
     "waitingArbitration": "Warten auf den Schiedsspruch des Vertragsinhabers zu diesem Einspruch.",
     "waitingTimeoutReached": "Der Inhaber hat diesen Einspruch nie entschieden. Jeder kann unten eine neutrale Rückerstattung auslösen.",
     "forceRefundCta": "Neutrale Rückerstattung auslösen (Frist abgelaufen)"
+  },
+  "chart": {
+    "title": "Quotenverlauf",
+    "notEnoughData": "Noch nicht genug Wetten für ein Diagramm — schau bald wieder vorbei."
   }
 }

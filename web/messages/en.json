@@ -205,5 +205,9 @@
     "waitingArbitration": "Waiting for the contract owner to arbitrate this dispute.",
     "waitingTimeoutReached": "The owner never ruled on this dispute. Anyone can trigger a neutral refund below.",
     "forceRefundCta": "Trigger neutral refund (timeout)"
+  },
+  "chart": {
+    "title": "Odds history",
+    "notEnoughData": "Not enough bets yet for a chart — check back soon."
   }
 }

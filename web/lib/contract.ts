@@ -243,6 +243,16 @@ export const marketAbi = [
   },
   {
     type: "event",
+    name: "MarketCreated",
+    inputs: [
+      { name: "marketId", type: "uint256", indexed: true },
+      { name: "creator", type: "address", indexed: true },
+      { name: "question", type: "string", indexed: false },
+      { name: "endTime", type: "uint64", indexed: false },
+    ],
+  },
+  {
+    type: "event",
     name: "BetPlaced",
     inputs: [
       { name: "marketId", type: "uint256", indexed: true },
